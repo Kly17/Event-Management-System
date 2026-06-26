@@ -1,55 +1,66 @@
 [
     {
+        "id": 1,
         "name": "Graduation Ceremony 2026",
         "date": "2026-07-15",
         "location": "University Gymnasium"
     },
     {
+        "id": 2,
         "name": "Python Programming Workshop",
         "date": "2026-08-05",
         "location": "Computer Laboratory 1"
     },
     {
+        "id": 3,
         "name": "Python Hackathon",
         "date": "2026-08-12",
         "location": "Auditorium A"
     },
-    {
+    {   
+        "id": 4,
         "name": "AI and Machine Learning Seminar",
         "date": "2026-08-20",
         "location": "Engineering Auditorium"
     },
     {
+        "id": 5,
         "name": "Student Leadership Training",
         "date": "2026-09-10",
         "location": "Conference Hall"
     },
     {
+        "id": 6,
         "name": "Research Proposal Defense",
         "date": "2026-09-25",
         "location": "Room 305"
     },
     {
+        "id": 7,
         "name": "Hackathon 2026",
         "date": "2026-10-12",
         "location": "Innovation Hub"
     },
     {
+        "id": 8,
         "name": "Career Fair",
         "date": "2026-10-25",
         "location": "University Covered Court"
     },
     {
+        "id": 9,
         "name": "Information Technology Symposium",
         "date": "2026-11-08",
         "location": "Main Auditorium"
     },
     {
+        "id": 10,
         "name": "Christmas Outreach Program",
         "date": "2026-12-18",
         "location": "Community Center"
     },
     {
+        "id": 11,
         "name": "New Year Countdown Event",
         "date": "2026-12-31",
         "location": "City Plaza"
