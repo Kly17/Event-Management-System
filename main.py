@@ -12,6 +12,12 @@ def load_events():
 def save_events(events):
     with open("events.json", "w") as file:
         json.dump(events, file, indent=4)
+        
+def get_next_id(events):
+    if not events:
+        return 1
+
+    return max(event["id"] for event in events) + 1
 
 events = load_events()
 
@@ -33,6 +39,7 @@ while True:
         event_location = input("Enter event location: ")
 
         event = {
+            "id": get_next_id(events),
             "name": event_name,
             "date": event_date,
             "location": event_location
@@ -50,7 +57,10 @@ while True:
             print("\n--- Event List ---")
             for i, event in enumerate(events, start=1):
                 print(
-                    f"{i}. {event['name']} | {event['date']} | {event['location']}")
+                    f"ID: {event['id']} |"
+                    f"Name: {event['name']} |"
+                    f"Date: {event['date']} |"
+                    f"Location: {event['location']}")
 
     # EDIT EVENT
     elif choice == "3":
