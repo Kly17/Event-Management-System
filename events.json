@@ -1,7 +1,57 @@
 [
     {
-        "name": "Birthday",
-        "date": "2026-04-17",
-        "location": "Barugo"
+        "name": "Graduation Ceremony 2026",
+        "date": "2026-07-15",
+        "location": "University Gymnasium"
+    },
+    {
+        "name": "Python Programming Workshop",
+        "date": "2026-08-05",
+        "location": "Computer Laboratory 1"
+    },
+    {
+        "name": "Python Hackathon",
+        "date": "2026-08-12",
+        "location": "Auditorium A"
+    },
+    {
+        "name": "AI and Machine Learning Seminar",
+        "date": "2026-08-20",
+        "location": "Engineering Auditorium"
+    },
+    {
+        "name": "Student Leadership Training",
+        "date": "2026-09-10",
+        "location": "Conference Hall"
+    },
+    {
+        "name": "Research Proposal Defense",
+        "date": "2026-09-25",
+        "location": "Room 305"
+    },
+    {
+        "name": "Hackathon 2026",
+        "date": "2026-10-12",
+        "location": "Innovation Hub"
+    },
+    {
+        "name": "Career Fair",
+        "date": "2026-10-25",
+        "location": "University Covered Court"
+    },
+    {
+        "name": "Information Technology Symposium",
+        "date": "2026-11-08",
+        "location": "Main Auditorium"
+    },
+    {
+        "name": "Christmas Outreach Program",
+        "date": "2026-12-18",
+        "location": "Community Center"
+    },
+    {
+        "name": "New Year Countdown Event",
+        "date": "2026-12-31",
+        "location": "City Plaza"
     }
 ]

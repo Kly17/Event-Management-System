@@ -21,7 +21,8 @@ while True:
     print("2. View Events")
     print("3. Edit Event")
     print("4. Delete Event")
-    print("5. Exit")
+    print("5. Search Event")
+    print("6. Exit")
 
     choice = input("Enter your choice: ")
 
@@ -119,9 +120,24 @@ while True:
 
             except ValueError:
                 print("Please enter a valid number.")
+    
+    #SEARCH EVENT
+    elif choice == "5":
+        search_term = input("Enter event name to search: ").strip().lower()
+        found_events = [event for event in events if search_term in event['name'].lower()]
+
+        if found_events:
+            print(f"\nFound {len(found_events)} event(s).")
+            print("\n--- Search Results ---")
+
+            for i, event in enumerate(found_events, start=1):
+                print(f"{i}. {event['name']} | {event['date']} | {event['location']}")
+        else:
+            print("No events found matching the search term.")
+
 
     # EXIT
-    elif choice == "5":
+    elif choice == "6":
         print("Exiting system...")
         break
 
