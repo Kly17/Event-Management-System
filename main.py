@@ -58,9 +58,9 @@ while True:
             for i, event in enumerate(events, start=1):
                 print(
                     f"ID: {event['id']} |"
-                    f"Name: {event['name']} |"
-                    f"Date: {event['date']} |"
-                    f"Location: {event['location']}")
+                    f" Name: {event['name']} |"
+                    f" Date: {event['date']} |"
+                    f" Location: {event['location']}")
 
     # EDIT EVENT
     elif choice == "3":
