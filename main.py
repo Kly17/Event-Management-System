@@ -1,6 +1,19 @@
 # Event Management System
 
-events = []
+import json
+
+def load_events():
+    try:
+        with open("events.json", "r") as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return []
+    
+def save_events(events):
+    with open("events.json", "w") as file:
+        json.dump(events, file, indent=4)
+
+events = load_events()
 
 while True:
     print("\n===== EVENT MANAGEMENT SYSTEM =====")
@@ -25,6 +38,7 @@ while True:
         }
 
         events.append(event)
+        save_events(events)
         print("Event added successfully!")
 
     # VIEW EVENTS
@@ -65,10 +79,13 @@ while True:
 
                     if new_name:
                         event['name'] = new_name
+                        save_events(events)
                     if new_date:
                         event['date'] = new_date
+                        save_events(events)
                     if new_location:
                         event['location'] = new_location
+                        save_events(events)
 
                     print("Event updated successfully!")
 
@@ -94,6 +111,7 @@ while True:
 
                 if 1 <= event_num <= len(events):
                     deleted_event = events.pop(event_num - 1)
+                    save_events(events)
                     print(
                         f"'{deleted_event['name']}' deleted successfully!")
                 else:
