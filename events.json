@@ -17,7 +17,7 @@
         "date": "2026-08-12",
         "location": "Auditorium A"
     },
-    {   
+    {
         "id": 4,
         "name": "AI and Machine Learning Seminar",
         "date": "2026-08-20",
@@ -30,16 +30,16 @@
         "location": "Conference Hall"
     },
     {
+        "id": 7,
+        "name": "Community Service Day",
+        "date": "2026-09-15",
+        "location": "Local Community Center"
+    },
+    {
         "id": 6,
         "name": "Research Proposal Defense",
         "date": "2026-09-25",
         "location": "Room 305"
-    },
-    {
-        "id": 7,
-        "name": "Hackathon 2026",
-        "date": "2026-10-12",
-        "location": "Innovation Hub"
     },
     {
         "id": 8,
