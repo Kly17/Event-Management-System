@@ -1,68 +1,87 @@
 [
     {
         "id": 1,
-        "name": "Graduation Ceremony 2026",
-        "date": "2026-07-15",
-        "location": "University Gymnasium"
+        "name": "Gradation Ceremony",
+        "category": "Ceremony",
+        "date": "2026-07-01",
+        "location": "Tacloban"
     },
     {
         "id": 2,
         "name": "Python Programming Workshop",
+        "category": "Workshop",
         "date": "2026-08-05",
         "location": "Computer Laboratory 1"
     },
     {
         "id": 3,
         "name": "Python Hackathon",
+        "category": "Competition",
         "date": "2026-08-12",
         "location": "Auditorium A"
     },
     {
         "id": 4,
         "name": "AI and Machine Learning Seminar",
+        "category": "Seminar",
         "date": "2026-08-20",
         "location": "Engineering Auditorium"
     },
     {
         "id": 5,
         "name": "Student Leadership Training",
+        "category": "Training",
         "date": "2026-09-10",
         "location": "Conference Hall"
     },
     {
         "id": 7,
         "name": "Community Service Day",
+        "category": "Community Service",
         "date": "2026-09-15",
         "location": "Local Community Center"
     },
     {
         "id": 6,
         "name": "Research Proposal Defense",
+        "category": "Academic",
         "date": "2026-09-25",
         "location": "Room 305"
     },
     {
         "id": 8,
         "name": "Career Fair",
+        "category": "Career",
         "date": "2026-10-25",
         "location": "University Covered Court"
     },
     {
         "id": 9,
         "name": "Information Technology Symposium",
+        "category": "Conference",
         "date": "2026-11-08",
         "location": "Main Auditorium"
     },
     {
         "id": 10,
         "name": "Christmas Outreach Program",
+        "category": "Community Service",
         "date": "2026-12-18",
         "location": "Community Center"
     },
     {
         "id": 11,
         "name": "New Year Countdown Event",
+        "category": "Festival",
         "date": "2026-12-31",
         "location": "City Plaza"
+    },
+    {
+        "id": 12,
+        "name": "JavaScript Workshop",
+        "category": "Workshop",
+        "date": "2026-09-21",
+        "location": "Tacloban"
     }
+    
 ]
