@@ -2,6 +2,24 @@
 
 import json
 
+def select_category(categories):
+    while True:
+        print("\n===== EVENT CATEGORIES =====")
+
+        for i, category in enumerate(categories, start=1):
+            print(f"{i}. {category}")
+
+        try:
+            choice = int(input("Select a category: "))
+
+            if 1 <= choice <= len(categories):
+                return categories[choice - 1]
+
+            print("Invalid category.")
+
+        except ValueError:
+            print("Please enter a valid number.")
+
 def load_events():
     try:
         with open("events.json", "r") as file:
@@ -14,12 +32,32 @@ def save_events(events):
         json.dump(events, file, indent=4)
         
 def get_next_id(events):
-    if not events:
-        return 1
 
-    return max(event["id"] for event in events) + 1
+    used_ids = {event["id"] for event in events}
+
+    next_id = 1
+
+    while next_id in used_ids:
+        next_id += 1
+
+    return next_id
 
 events = load_events()
+
+categories = [
+    "Academic",
+    "Career",
+    "Ceremony",
+    "Community Service",
+    "Competition",
+    "Conference",
+    "Festival",
+    "Meeting",
+    "Seminar",
+    "Training",
+    "Workshop",
+    "Others"
+]
 
 while True:
     print("\n===== EVENT MANAGEMENT SYSTEM =====")
@@ -37,10 +75,13 @@ while True:
         event_name = input("Enter event name: ")
         event_date = input("Enter event date (YYYY-MM-DD): ")
         event_location = input("Enter event location: ")
+        event_category = select_category(categories)
+            
 
         event = {
             "id": get_next_id(events),
             "name": event_name,
+            "category": event_category,
             "date": event_date,
             "location": event_location
         }
@@ -59,6 +100,7 @@ while True:
                 print(
                     f"ID: {event['id']} |"
                     f" Name: {event['name']} |"
+                    f" Category: {event['category']} |"
                     f" Date: {event['date']} |"
                     f" Location: {event['location']}")
 
@@ -141,7 +183,7 @@ while True:
             print("\n--- Search Results ---")
 
             for i, event in enumerate(found_events, start=1):
-                print(f"{i}. {event['name']} | {event['date']} | {event['location']}")
+                print(f"{i}. {event['name']} | {event['category']} | {event['date']} | {event['location']}")
         else:
             print("No events found matching the search term.")
 
