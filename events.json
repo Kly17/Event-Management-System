@@ -1,87 +1,132 @@
 [
     {
         "id": 1,
-        "name": "Gradation Ceremony",
+        "name": "Graduation Ceremony",
         "category": "Ceremony",
         "date": "2026-07-01",
-        "location": "Tacloban"
+        "time": "09:00",
+        "location": "Tacloban",
+        "description": "Graduation ceremony honoring the Class of 2026.",
+        "capacity": 1000
     },
     {
         "id": 2,
         "name": "Python Programming Workshop",
         "category": "Workshop",
         "date": "2026-08-05",
-        "location": "Computer Laboratory 1"
+        "time": "08:30",
+        "location": "Computer Laboratory 1",
+        "description": "A beginner-friendly workshop covering the fundamentals of Python programming.",
+        "capacity": 50
     },
     {
         "id": 3,
         "name": "Python Hackathon",
         "category": "Competition",
         "date": "2026-08-12",
-        "location": "Auditorium A"
+        "time": "08:00",
+        "location": "Auditorium A",
+        "description": "A full-day programming competition focused on solving real-world challenges using Python.",
+        "capacity": 120
     },
     {
         "id": 4,
         "name": "AI and Machine Learning Seminar",
         "category": "Seminar",
         "date": "2026-08-20",
-        "location": "Engineering Auditorium"
+        "time": "01:00",
+        "location": "Engineering Auditorium",
+        "description": "Seminar discussing artificial intelligence, machine learning, and current industry trends.",
+        "capacity": 200
     },
     {
         "id": 5,
         "name": "Student Leadership Training",
         "category": "Training",
         "date": "2026-09-10",
-        "location": "Conference Hall"
+        "time": "09:30",
+        "location": "Conference Hall",
+        "description": "Leadership development program designed for student organization officers.",
+        "capacity": 80
     },
     {
         "id": 7,
         "name": "Community Service Day",
         "category": "Community Service",
         "date": "2026-09-15",
-        "location": "Local Community Center"
+        "time": "07:30",
+        "location": "Local Community Center",
+        "description": "Volunteer outreach program involving environmental cleanup and community assistance.",
+        "capacity": 150
     },
     {
         "id": 6,
         "name": "Research Proposal Defense",
         "category": "Academic",
         "date": "2026-09-25",
-        "location": "Room 305"
+        "time": "10:00",
+        "location": "Room 305",
+        "description": "Research students present and defend their project proposals before the evaluation panel.",
+        "capacity": 40
     },
     {
         "id": 8,
         "name": "Career Fair",
         "category": "Career",
         "date": "2026-10-25",
-        "location": "University Covered Court"
+        "time": "09:00",
+        "location": "University Covered Court",
+        "description": "Networking event connecting students with employers and internship opportunities.",
+        "capacity": 500
     },
     {
         "id": 9,
         "name": "Information Technology Symposium",
         "category": "Conference",
         "date": "2026-11-08",
-        "location": "Main Auditorium"
+        "time": "08:00",
+        "location": "Main Auditorium",
+        "description": "Conference featuring expert speakers discussing emerging technologies in information technology.",
+        "capacity": 350
     },
     {
         "id": 10,
         "name": "Christmas Outreach Program",
         "category": "Community Service",
         "date": "2026-12-18",
-        "location": "Community Center"
+        "time": "08:30",
+        "location": "Community Center",
+        "description": "Holiday outreach program providing gifts, meals, and activities for local families.",
+        "capacity": 250
     },
     {
         "id": 11,
         "name": "New Year Countdown Event",
         "category": "Festival",
         "date": "2026-12-31",
-        "location": "City Plaza"
+        "time": "20:00",
+        "location": "City Plaza",
+        "description": "Public celebration featuring live performances, entertainment, and a midnight countdown.",
+        "capacity": 3000
     },
     {
         "id": 12,
         "name": "JavaScript Workshop",
         "category": "Workshop",
         "date": "2026-09-21",
-        "location": "Tacloban"
+        "time": "01:30",
+        "location": "Tacloban",
+        "description": "Hands-on workshop introducing JavaScript programming and modern web development concepts.",
+        "capacity": 60
+    },
+    {
+        "id": 13,
+        "name": "Mock Exam",
+        "category": "Academic",
+        "date": "2026-10-31",
+        "time": "09:00",
+        "description": "Prepare students for the upcoming exams.",
+        "capacity": 50,
+        "location": "Beverly Hills"
     }
-    
 ]
