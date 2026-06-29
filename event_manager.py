@@ -20,7 +20,8 @@ class EventManager:
                                 "Workshop",
                                 "Others"
                             ]
-
+        
+    # LOAD EVENTS IN JSON FILE
     def load_events(self):
         try:
             with open("events.json", "r") as file:
@@ -28,7 +29,8 @@ class EventManager:
                 return [Event.from_dict(event) for event in data]
         except FileNotFoundError:
             return []
-
+        
+    #SAVE EVENTS IN JSON FILE
     def save_events(self):
         with open("events.json", "w") as file:
             json.dump(
@@ -37,6 +39,7 @@ class EventManager:
                 indent=4
             )
 
+    #EVENT IDs
     def get_next_id(self):
         used_ids = {event.id for event in self.events}
 
@@ -47,6 +50,7 @@ class EventManager:
 
         return next_id
     
+    #EVENT CATEGORY PICKER
     def select_category(self):
         while True:
 
@@ -66,6 +70,7 @@ class EventManager:
             except ValueError:
                 print("Please enter a valid number.")
     
+    #ADD EVENTS
     def add_event(self):
         print("\n===== ADD EVENT =====")
 
@@ -105,6 +110,80 @@ class EventManager:
 
         print("\nEvent added successfully!")
 
+    #EDIT EVENTS
+    def edit_event(self):
+
+        if not self.events:
+            print("\nNo events available to edit.")
+            return
+
+        self.view_events()
+
+        try:
+            event_id = int(input("\nEnter the Event ID to edit: "))
+
+        except ValueError:
+            print("Please enter a valid number.")
+            return
+
+        event = None
+
+        for e in self.events:
+            if e.id == event_id:
+                event = e
+                break
+
+        if event is None:
+            print("Event not found.")
+            return
+
+        print("\nLeave blank to keep the current value.")
+
+        new_name = input(f"Name ({event.name}): ")
+        new_date = input(f"Date ({event.date}): ")
+        new_time = input(f"Time ({event.time}): ")
+        new_description = input(f"Description ({event.description}): ")
+        new_capacity = input(f"Capacity ({event.capacity}): ")
+        new_location = input(f"Location ({event.location}): ")
+
+        change_category = input("Change category? (Y/N): ").lower()
+
+        if change_category == "y":
+            event.category = self.select_category()
+
+        if new_name:
+            event.name = new_name
+
+        if new_date:
+            event.date = new_date
+
+        if new_time:
+            event.time = new_time
+
+        if new_description:
+            event.description = new_description
+
+        if new_capacity:
+            try:
+                capacity = int(new_capacity)
+
+                if capacity > 0:
+                    event.capacity = capacity
+                else:
+                    print("Invalid capacity. Keeping old value.")
+
+            except ValueError:
+                print("Invalid capacity. Keeping old value.")
+
+        if new_location:
+            event.location = new_location
+
+        self.save_events()
+
+        print("\nEvent updated successfully!")
+    
+
+    #VIEW EVENTS
     def view_events(self):
 
         if not self.events:
@@ -116,6 +195,7 @@ class EventManager:
         for event in self.events:
             self.display_event(event)
 
+    # DISPLAY TEXT
     def display_event(self, event):
         print("=" * 50)
         print(f"Event ID    : {event.id}")
