@@ -1,12 +1,202 @@
 [
     {
         "id": 1,
-        "name": "Birthday",
-        "category": "Others",
-        "date": "2026-09-17",
+        "name": "Graduation Ceremony 2026",
+        "category": "Ceremony",
+        "date": "2026-07-15",
+        "time": "10:00",
+        "description": "Annual graduation ceremony for the Class of 2026.",
+        "capacity": 500,
+        "location": "University Gymnasium"
+    },
+    {
+        "id": 2,
+        "name": "Python Programming Workshop",
+        "category": "Workshop",
+        "date": "2026-07-20",
+        "time": "08:30",
+        "description": "Hands-on Python programming workshop for beginners.",
+        "capacity": 50,
+        "location": "Computer Laboratory 1"
+    },
+    {
+        "id": 3,
+        "name": "AI and Machine Learning Seminar",
+        "category": "Seminar",
+        "date": "2026-08-05",
+        "time": "10:00",
+        "description": "Introduction to artificial intelligence and machine learning.",
+        "capacity": 200,
+        "location": "Engineering Auditorium"
+    },
+    {
+        "id": 4,
+        "name": "Student Leadership Training",
+        "category": "Training",
+        "date": "2026-08-10",
         "time": "09:00",
-        "description": "Birthday for my Grandma",
-        "capacity": 10,
-        "location": "Barugo"
+        "description": "Leadership development for student organization officers.",
+        "capacity": 120,
+        "location": "Conference Hall"
+    },
+    {
+        "id": 5,
+        "name": "Campus Clean-Up Drive",
+        "category": "Community Service",
+        "date": "2026-08-15",
+        "time": "07:00",
+        "description": "Volunteer activity to clean the university campus.",
+        "capacity": 150,
+        "location": "University Grounds"
+    },
+    {
+        "id": 6,
+        "name": "Research Proposal Defense",
+        "category": "Academic",
+        "date": "2026-08-22",
+        "time": "13:00",
+        "description": "Presentation and defense of undergraduate research proposals.",
+        "capacity": 80,
+        "location": "Room 305"
+    },
+    {
+        "id": 7,
+        "name": "Hackathon 2026",
+        "category": "Competition",
+        "date": "2026-09-01",
+        "time": "08:00",
+        "description": "24-hour programming competition for students.",
+        "capacity": 100,
+        "location": "Innovation Hub"
+    },
+    {
+        "id": 8,
+        "name": "Career Fair",
+        "category": "Career",
+        "date": "2026-09-10",
+        "time": "09:00",
+        "description": "Meet employers and explore internship opportunities.",
+        "capacity": 500,
+        "location": "Covered Court"
+    },
+    {
+        "id": 9,
+        "name": "Information Technology Symposium",
+        "category": "Conference",
+        "date": "2026-09-18",
+        "time": "09:30",
+        "description": "Conference featuring experts in information technology.",
+        "capacity": 350,
+        "location": "Main Auditorium"
+    },
+    {
+        "id": 10,
+        "name": "Freshmen Orientation",
+        "category": "Meeting",
+        "date": "2026-09-25",
+        "time": "08:00",
+        "description": "Orientation program for newly enrolled students.",
+        "capacity": 700,
+        "location": "University Gymnasium"
+    },
+    {
+        "id": 11,
+        "name": "Web Development Bootcamp",
+        "category": "Workshop",
+        "date": "2026-10-03",
+        "time": "09:00",
+        "description": "Learn HTML, CSS, JavaScript, and web development basics.",
+        "capacity": 60,
+        "location": "Computer Laboratory 2"
+    },
+    {
+        "id": 12,
+        "name": "Cybersecurity Awareness Seminar",
+        "category": "Seminar",
+        "date": "2026-10-08",
+        "time": "14:00",
+        "description": "Best practices for staying safe online.",
+        "capacity": 250,
+        "location": "Audio Visual Room"
+    },
+    {
+        "id": 13,
+        "name": "Chess Tournament",
+        "category": "Competition",
+        "date": "2026-10-15",
+        "time": "09:00",
+        "description": "Inter-department chess tournament.",
+        "capacity": 64,
+        "location": "Student Center"
+    },
+    {
+        "id": 14,
+        "name": "Faculty Meeting",
+        "category": "Meeting",
+        "date": "2026-10-20",
+        "time": "15:00",
+        "description": "Monthly meeting of all university faculty members.",
+        "capacity": 120,
+        "location": "Conference Room A"
+    },
+    {
+        "id": 15,
+        "name": "Entrepreneurship Summit",
+        "category": "Conference",
+        "date": "2026-11-02",
+        "time": "09:00",
+        "description": "Conference focused on innovation and entrepreneurship.",
+        "capacity": 300,
+        "location": "Business Building"
+    },
+    {
+        "id": 16,
+        "name": "First Aid Training",
+        "category": "Training",
+        "date": "2026-11-10",
+        "time": "08:30",
+        "description": "Basic first aid and emergency response training.",
+        "capacity": 80,
+        "location": "Nursing Skills Laboratory"
+    },
+    {
+        "id": 17,
+        "name": "Tree Planting Activity",
+        "category": "Community Service",
+        "date": "2026-11-20",
+        "time": "07:30",
+        "description": "Environmental conservation through tree planting.",
+        "capacity": 200,
+        "location": "City Watershed"
+    },
+    {
+        "id": 18,
+        "name": "Christmas Outreach Program",
+        "category": "Community Service",
+        "date": "2026-12-12",
+        "time": "09:00",
+        "description": "Gift-giving activity for local communities.",
+        "capacity": 150,
+        "location": "Community Center"
+    },
+    {
+        "id": 19,
+        "name": "Christmas Festival",
+        "category": "Festival",
+        "date": "2026-12-20",
+        "time": "18:00",
+        "description": "Annual Christmas celebration with performances and food stalls.",
+        "capacity": 1000,
+        "location": "University Plaza"
+    },
+    {
+        "id": 20,
+        "name": "New Year Countdown",
+        "category": "Festival",
+        "date": "2026-12-31",
+        "time": "21:00",
+        "description": "Countdown celebration to welcome the New Year.",
+        "capacity": 2000,
+        "location": "City Plaza"
     }
 ]
