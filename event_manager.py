@@ -51,18 +51,18 @@ class EventManager:
         while True:
 
             print("\n===== EVENT CATEGORIES =====")
-    
+
             for i, category in enumerate(self.categories, start=1):
                 print(f"{i}. {category}")
-    
+
             try:
                 choice = int(input("Select a category: "))
-    
+
                 if 1 <= choice <= len(self.categories):
                     return self.categories[choice - 1]
-    
+
                 print("Invalid category.")
-    
+
             except ValueError:
                 print("Please enter a valid number.")
     
@@ -104,3 +104,26 @@ class EventManager:
         self.save_events()
 
         print("\nEvent added successfully!")
+
+    def view_events(self):
+
+        if not self.events:
+            print("\nNo events found.")
+            return
+
+        print("\n===== EVENT LIST =====")
+
+        for event in self.events:
+            self.display_event(event)
+
+    def display_event(self, event):
+        print("=" * 50)
+        print(f"Event ID    : {event.id}")
+        print(f"Name        : {event.name}")
+        print(f"Category    : {event.category}")
+        print(f"Date        : {event.date}")
+        print(f"Time        : {event.time}")
+        print(f"Location    : {event.location}")
+        print(f"Capacity    : {event.capacity}")
+        print(f"Description : {event.description}")
+        print("=" * 50)
