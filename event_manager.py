@@ -40,6 +40,28 @@ class EventManager:
                 print(error_message)
     
     #========================================================================
+    #VALIDATE CAPACITY
+    def validate_capacity(self, prompt, allow_empty=False):
+
+        while True:
+
+            value = input(prompt).strip()
+
+            if allow_empty and value == "":
+                return ""
+
+            try:
+                capacity = int(value)
+
+                if capacity > 0:
+                    return capacity
+
+                print("Capacity must be greater than 0.")
+
+            except ValueError:
+                print("Please enter a valid number.")
+    
+    #========================================================================
     # LOAD EVENTS IN JSON FILE
     def load_events(self):
         try:
@@ -59,7 +81,7 @@ class EventManager:
             )
 
     #=========================================================================
-    #EVENT IDs
+    #GET EVENT IDs
     def get_next_id(self):
         used_ids = {event.id for event in self.events}
 
@@ -69,6 +91,16 @@ class EventManager:
             next_id += 1
 
         return next_id
+
+    #========================================================================
+    #FIND EVENT BY ID
+    def find_event_by_id(self, event_id):
+
+        for event in self.events:
+            if event.id == event_id:
+                return event
+
+        return None
     
     #=========================================================================
     #EVENT CATEGORY PICKER
@@ -101,19 +133,7 @@ class EventManager:
         date = self.validate_input("Enter event date (YYYY-MM-DD): ", "%Y-%m-%d", "Invalid date format. Please use YYYY-MM-DD.")
         time = self.validate_input("Enter event time in 24-hour format (HH:MM): ", "%H:%M", "Invalid time format. Please use HH:MM (24-hour format).")
         description = input("Enter event description: ")
-
-        while True:
-            try:
-                capacity = int(input("Enter event capacity: "))
-
-                if capacity > 0:
-                    break
-
-                print("Capacity must be greater than 0.")
-
-            except ValueError:
-                print("Please enter a valid number.")
-
+        capacity = self.validate_capacity("Enter event capacity: ")
         location = input("Enter event location: ")
         category = self.select_category()
 
@@ -151,12 +171,7 @@ class EventManager:
             print("Please enter a valid number.")
             return
 
-        event = None
-
-        for e in self.events:
-            if e.id == event_id:
-                event = e
-                break
+        event = self.find_event_by_id(event_id)
 
         if event is None:
             print("Event not found.")
@@ -168,7 +183,7 @@ class EventManager:
         new_date = self.validate_input(f"Date ({event.date}) [Press Enter to Keep Date]: ", "%Y-%m-%d", "Invalid date format. Please use YYYY-MM-DD.")
         new_time = self.validate_input(f"Time ({event.time}) [Press Enter to Keep Time]: ", "%H:%M", "Invalid time format. Please use HH:MM (24-hour format).")
         new_description = input(f"Description ({event.description}): ")
-        new_capacity = input(f"Capacity ({event.capacity}): ")
+        new_capacity = self.validate_capacity(f"Capacity ({event.capacity}) [Press Enter to Keep]: ", allow_empty=True)
         new_location = input(f"Location ({event.location}): ")
 
         change_category = input("Change category? (Y/N): ").lower()
@@ -188,17 +203,8 @@ class EventManager:
         if new_description:
             event.description = new_description
 
-        if new_capacity:
-            try:
-                capacity = int(new_capacity)
-
-                if capacity > 0:
-                    event.capacity = capacity
-                else:
-                    print("Invalid capacity. Keeping old value.")
-
-            except ValueError:
-                print("Invalid capacity. Keeping old value.")
+        if new_capacity == "":
+            event.capacity = new_capacity
 
         if new_location:
             event.location = new_location
@@ -403,12 +409,7 @@ class EventManager:
             print("Please enter a valid number.")
             return
 
-        event = None
-
-        for e in self.events:
-            if e.id == event_id:
-                event = e
-                break
+        event = self.find_event_by_id(event_id)
 
         if event is None:
             print("Event not found.")
@@ -438,13 +439,7 @@ class EventManager:
 
         search_term = input("\nEnter a keyword to search: ").strip().lower()
 
-        found_events = [
-            event for event in self.events 
-            if search_term in event.name.lower()
-            or search_term in event.category.lower()
-            or search_term in event.description.lower()
-            or search_term in event.location.lower()
-        ]
+        found_events = [event for event in self.events]
 
         for event in self.events:
 
@@ -464,6 +459,62 @@ class EventManager:
 
         for event in found_events:
             self.display_event(event)
+
+    #=========================================================================
+    #CATEGORY STATISTICS
+    def show_category_statistics(self):
+
+        print("\n----- Events by Category -----")
+
+        category_count = {}
+
+        for event in self.events:
+
+            if event.category not in category_count:
+                category_count[event.category] = 0
+
+            category_count[event.category] += 1
+
+        for category, total in sorted(category_count.items()):
+            print(f"{category}: {total}")
+    
+    #========================================================================
+    #CAPACITY STATISTICS
+    def show_capacity_statistics(self):
+
+        print("\n----- Capacity Statistics -----")
+    
+        total_capacity = sum(event.capacity for event in self.events)
+    
+        average_capacity = total_capacity / len(self.events)
+    
+        largest = max(self.events, key=lambda event: event.capacity)
+    
+        smallest = min(self.events, key=lambda event: event.capacity)
+    
+        print(f"Total Capacity : {total_capacity}")
+        print(f"Average Capacity : {average_capacity:.2f}")
+    
+        print("\nLargest Event")
+        print(f"{largest.name} ({largest.capacity})")
+    
+        print("\nSmallest Event")
+        print(f"{smallest.name} ({smallest.capacity})")
+    
+    #=========================================================================
+    #DASHBOARD
+    def dashboard(self):
+
+        if not self.events:
+            print("\nNo events available.")
+            return
+    
+        print("\n========== EVENT DASHBOARD ==========")
+    
+        print(f"\nTotal Events : {len(self.events)}")
+    
+        self.show_category_statistics()
+        self.show_capacity_statistics()
 
     #=========================================================================
     # DISPLAY TEXT
