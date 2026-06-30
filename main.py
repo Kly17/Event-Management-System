@@ -9,8 +9,10 @@ while True:
     print("2. View Event")
     print("3. Edit Event")
     print("4. Search Event")
-    print("5. Delete Event")
-    print("6. Exit")
+    print("5. Sort Event")
+    print("6. Filter Event")
+    print("7. Delete Events")
+    print("8. Exit")
     
     choice = input("Enter your choice: ")
 
@@ -25,11 +27,17 @@ while True:
     
     elif choice == "4":
         manager.search_event()
-
+    
     elif choice == "5":
-        manager.delete_event()
+        manager.sort_events()
 
     elif choice == "6":
+        manager.filter_events()
+
+    elif choice == "7":
+        manager.delete_event()
+
+    elif choice == "8":
         print("Exiting...")
         break
 

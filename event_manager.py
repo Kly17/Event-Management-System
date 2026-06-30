@@ -220,8 +220,172 @@ class EventManager:
 
         for event in self.events:
             self.display_event(event)
+
     
+    #=========================================================================
+    #SORT EVENTS
+    def sort_events(self):
+
+        if not self.events:
+            print("\nNo events available.")
+            return
+
+        while True:
+
+            print("\n===== SORT EVENTS =====")
+            print("1. Sort by Date")
+            print("2. Sort by Name")
+            print("3. Sort by Category")
+            print("4. Sort by Capacity")
+            print("5. Sort by Location")
+            print("6. Back")
+
+            choice = input("Enter your choice: ")
+
+            if choice == "1":
+                self.events.sort(key=lambda event: event.date)
+                print("\nEvents sorted by date.")
+
+            elif choice == "2":
+                self.events.sort(key=lambda event: event.name.lower())
+                print("\nEvents sorted by name.")
+
+            elif choice == "3":
+                self.events.sort(key=lambda event: event.category.lower())
+                print("\nEvents sorted by category.")
+
+            elif choice == "4":
+                self.events.sort(key=lambda event: event.capacity)
+                print("\nEvents sorted by capacity.")
+
+            elif choice == "5":
+                self.events.sort(key=lambda event: event.location.lower())
+                print("\nEvents sorted by location.")
+
+            elif choice == "6":
+                break
+
+            else:
+                print("Invalid choice.")
+                continue
+
+            self.view_events()
     
+    #=========================================================================
+    #FILTER BY CATEGORY
+    def filter_by_category(self):
+
+        category = self.select_category()
+
+        filtered_events = [
+            event for event in self.events
+            if event.category == category
+        ]
+
+        if not filtered_events:
+            print("\nNo events found.")
+            return
+
+        print(f"\n===== {category.upper()} EVENTS =====")
+
+        for event in filtered_events:
+            self.display_event(event)
+
+    
+    #=========================================================================
+    #FILTER BY LOCATION
+    def filter_by_location(self):
+
+        location = input("Enter location: ").strip().lower()
+
+        filtered_events = [
+            event for event in self.events
+            if location in event.location.lower()
+        ]
+
+        if not filtered_events:
+            print("\nNo events found.")
+            return
+
+        for event in filtered_events:
+            self.display_event(event)
+    
+    #=========================================================================
+    #FILTER BY MONTH
+    def filter_by_month(self):
+
+        month = input("Enter month (01-12): ")
+        filtered_events = [
+            event for event in self.events
+            if event.date[5:7] == month
+        ]
+        if not filtered_events:
+            print("\nNo events found.")
+            return
+        for event in filtered_events:
+            self.display_event(event)
+    
+    #=========================================================================
+    #FILTER BY CAPACITY
+    def filter_by_capacity(self):
+
+        try:
+            minimum = int(input("Minimum capacity: "))
+            maximum = int(input("Maximum capacity: "))
+
+        except ValueError:
+            print("Invalid capacity.")
+            return
+
+        filtered_events = [
+            event for event in self.events
+            if minimum <= event.capacity <= maximum
+        ]
+
+        if not filtered_events:
+            print("\nNo events found.")
+            return
+
+        for event in filtered_events:
+            self.display_event(event)
+
+    #=========================================================================
+    #FILTER EVENTS
+    def filter_events(self):
+
+        if not self.events:
+            print("\nNo events available.")
+            return
+
+        while True:
+
+            print("\n===== FILTER EVENTS =====")
+            print("1. Filter by Category")
+            print("2. Filter by Location")
+            print("3. Filter by Month")
+            print("4. Filter by Capacity")
+            print("5. Back")
+
+            choice = input("Enter your choice: ")
+
+            if choice == "1":
+                self.filter_by_category()
+
+            elif choice == "2":
+                self.filter_by_location()
+
+            elif choice == "3":
+                self.filter_by_month()
+
+            elif choice == "4":
+                self.filter_by_capacity()
+
+            elif choice == "5":
+                break
+
+            else:
+                print("Invalid choice.")
+
     #=========================================================================
     #DELETE EVENTS
     def delete_event(self):
