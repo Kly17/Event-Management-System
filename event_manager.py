@@ -194,6 +194,83 @@ class EventManager:
 
         for event in self.events:
             self.display_event(event)
+    
+    #DELETE EVENTS
+    def delete_event(self):
+
+        if not self.events:
+            print("\nNo events available to delete.")
+            return
+
+        self.view_events()
+
+        try:
+            event_id = int(input("\nEnter the Event ID to delete: "))
+
+        except ValueError:
+            print("Please enter a valid number.")
+            return
+
+        event = None
+
+        for e in self.events:
+            if e.id == event_id:
+                event = e
+                break
+
+        if event is None:
+            print("Event not found.")
+            return
+
+        print("\nSelected Event:")
+        self.display_event(event)
+
+        confirm = input("Are you sure you want to delete this event? (Y/N): ").lower()
+
+        if confirm == "y":
+            self.events.remove(event)
+            self.save_events()
+            print("Event deleted successfully!")
+
+        else:
+            print("Deletion cancelled.")
+    
+
+    #SEARCH EVENTS
+    def search_event(self):
+
+        if not self.events:
+            print("\nNo events available.")
+            return
+
+        search_term = input("\nEnter a keyword to search: ").strip().lower()
+
+        found_events = [
+            event for event in self.events 
+            if search_term in event.name.lower()
+            or search_term in event.category.lower()
+            or search_term in event.description.lower()
+            or search_term in event.location.lower()
+        ]
+
+        for event in self.events:
+
+            if (
+                search_term in event.name.lower()
+                or search_term in event.category.lower()
+                or search_term in event.description.lower()
+                or search_term in event.location.lower()
+            ):
+                found_events.append(event)
+
+        if not found_events:
+            print("\nNo matching events found.")
+            return
+
+        print(f"\nFound {len(found_events)} event(s).\n")
+
+        for event in found_events:
+            self.display_event(event)
 
     # DISPLAY TEXT
     def display_event(self, event):
