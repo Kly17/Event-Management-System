@@ -188,15 +188,5 @@
         "description": "Annual Christmas celebration with performances and food stalls.",
         "capacity": 1000,
         "location": "University Plaza"
-    },
-    {
-        "id": 20,
-        "name": "New Year Countdown",
-        "category": "Festival",
-        "date": "2026-12-31",
-        "time": "21:00",
-        "description": "Countdown celebration to welcome the New Year.",
-        "capacity": 2000,
-        "location": "City Plaza"
     }
 ]

@@ -7,19 +7,19 @@ class EventManager:
     def __init__(self):
         self.events = self.load_events()
         self.categories = [
-                                "Academic",
-                                "Career",
-                                "Ceremony",
-                                "Community Service",
-                                "Competition",
-                                "Conference",
-                                "Festival",
-                                "Meeting",
-                                "Seminar",
-                                "Training",
-                                "Workshop",
-                                "Others"
-                            ]
+        "Academic",
+        "Career",
+        "Ceremony",
+        "Community Service",
+        "Competition",
+        "Conference",
+        "Festival",
+        "Meeting",
+        "Seminar",
+        "Training",
+        "Workshop",
+        "Others"
+]
         
     # LOAD EVENTS IN JSON FILE
     def load_events(self):
