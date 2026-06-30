@@ -21,7 +21,7 @@ class EventManager:
         "Workshop",
         "Others"
 ]
-        
+    #========================================================================    
     #VALIDATE DATE AND TIME
     def validate_input(self, prompt, format_string, error_message, allow_empty=False):
 
@@ -38,7 +38,8 @@ class EventManager:
 
             except ValueError:
                 print(error_message)
-   
+    
+    #========================================================================
     # LOAD EVENTS IN JSON FILE
     def load_events(self):
         try:
@@ -57,6 +58,7 @@ class EventManager:
                 indent=4
             )
 
+    #=========================================================================
     #EVENT IDs
     def get_next_id(self):
         used_ids = {event.id for event in self.events}
@@ -68,6 +70,7 @@ class EventManager:
 
         return next_id
     
+    #=========================================================================
     #EVENT CATEGORY PICKER
     def select_category(self):
         while True:
@@ -88,6 +91,8 @@ class EventManager:
             except ValueError:
                 print("Please enter a valid number.")
     
+    
+    #=========================================================================
     #ADD EVENTS
     def add_event(self):
         print("\n===== ADD EVENT =====")
@@ -128,6 +133,8 @@ class EventManager:
 
         print("\nEvent added successfully!")
 
+
+    #=========================================================================
     #EDIT EVENTS
     def edit_event(self):
 
@@ -201,6 +208,7 @@ class EventManager:
         print("\nEvent updated successfully!")
     
 
+    #=========================================================================
     #VIEW EVENTS
     def view_events(self):
 
@@ -213,6 +221,8 @@ class EventManager:
         for event in self.events:
             self.display_event(event)
     
+    
+    #=========================================================================
     #DELETE EVENTS
     def delete_event(self):
 
@@ -254,6 +264,7 @@ class EventManager:
             print("Deletion cancelled.")
     
 
+    #=========================================================================
     #SEARCH EVENTS
     def search_event(self):
 
@@ -290,6 +301,7 @@ class EventManager:
         for event in found_events:
             self.display_event(event)
 
+    #=========================================================================
     # DISPLAY TEXT
     def display_event(self, event):
         print("=" * 50)
