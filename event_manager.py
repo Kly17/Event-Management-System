@@ -1,4 +1,5 @@
 import json
+from datetime import datetime
 from event import Event
 
 
@@ -21,6 +22,23 @@ class EventManager:
         "Others"
 ]
         
+    #VALIDATE DATE AND TIME
+    def validate_input(self, prompt, format_string, error_message, allow_empty=False):
+
+        while True:
+
+            value = input(prompt).strip()
+
+            if allow_empty and value == "":
+                return ""
+
+            try:
+                datetime.strptime(value, format_string)
+                return value
+
+            except ValueError:
+                print(error_message)
+   
     # LOAD EVENTS IN JSON FILE
     def load_events(self):
         try:
@@ -75,8 +93,8 @@ class EventManager:
         print("\n===== ADD EVENT =====")
 
         name = input("Enter event name: ")
-        date = input("Enter event date (YYYY-MM-DD): ")
-        time = input("Enter event time (HH:MM): ")
+        date = self.validate_input("Enter event date (YYYY-MM-DD): ", "%Y-%m-%d", "Invalid date format. Please use YYYY-MM-DD.")
+        time = self.validate_input("Enter event time in 24-hour format (HH:MM): ", "%H:%M", "Invalid time format. Please use HH:MM (24-hour format).")
         description = input("Enter event description: ")
 
         while True:
@@ -140,8 +158,8 @@ class EventManager:
         print("\nLeave blank to keep the current value.")
 
         new_name = input(f"Name ({event.name}): ")
-        new_date = input(f"Date ({event.date}): ")
-        new_time = input(f"Time ({event.time}): ")
+        new_date = self.validate_input(f"Date ({event.date}) [Press Enter to Keep Date]: ", "%Y-%m-%d", "Invalid date format. Please use YYYY-MM-DD.")
+        new_time = self.validate_input(f"Time ({event.time}) [Press Enter to Keep Time]: ", "%H:%M", "Invalid time format. Please use HH:MM (24-hour format).")
         new_description = input(f"Description ({event.description}): ")
         new_capacity = input(f"Capacity ({event.capacity}): ")
         new_location = input(f"Location ({event.location}): ")
