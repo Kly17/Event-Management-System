@@ -5,6 +5,7 @@ from event import Event
 
 class EventManager:
 
+    #CONSTRUCTOR
     def __init__(self):
         self.events = self.load_events()
         self.categories = [
@@ -21,6 +22,21 @@ class EventManager:
         "Workshop",
         "Others"
 ]
+    #========================================================================
+    #DUPLICATOR DETECTION
+    def is_duplicate_event(self, name, date, time):
+
+        for event in self.events:
+
+            if (
+                event.name.lower() == name.lower()
+                and event.date == date
+                and event.time == time
+            ):
+                return True
+
+        return False
+
     #========================================================================    
     #VALIDATE DATE AND TIME
     def validate_input(self, prompt, format_string, error_message, allow_empty=False):
@@ -137,6 +153,7 @@ class EventManager:
         location = input("Enter event location: ")
         category = self.select_category()
 
+        
         new_event = Event(
             event_id=self.get_next_id(),
             name=name,
@@ -147,7 +164,10 @@ class EventManager:
             capacity=capacity,
             location=location
         )
-
+        if self.is_duplicate_event(name, date, time):
+            print("\nDuplicate event detected. Event not added.")
+            return
+            
         self.events.append(new_event)
         self.save_events()
 
@@ -483,21 +503,21 @@ class EventManager:
     def show_capacity_statistics(self):
 
         print("\n----- Capacity Statistics -----")
-    
+
         total_capacity = sum(event.capacity for event in self.events)
-    
+
         average_capacity = total_capacity / len(self.events)
-    
+
         largest = max(self.events, key=lambda event: event.capacity)
-    
+
         smallest = min(self.events, key=lambda event: event.capacity)
-    
+
         print(f"Total Capacity : {total_capacity}")
         print(f"Average Capacity : {average_capacity:.2f}")
-    
+
         print("\nLargest Event")
         print(f"{largest.name} ({largest.capacity})")
-    
+
         print("\nSmallest Event")
         print(f"{smallest.name} ({smallest.capacity})")
     
