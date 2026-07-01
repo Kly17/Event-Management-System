@@ -1,6 +1,7 @@
 import json
 from datetime import datetime
 from event import Event
+from participant import Participant
 
 
 class EventManager:
@@ -8,6 +9,7 @@ class EventManager:
     #CONSTRUCTOR
     def __init__(self):
         self.events = self.load_events()
+        self.participants = self.load_participants()
         self.categories = [
         "Academic",
         "Career",
@@ -21,7 +23,7 @@ class EventManager:
         "Training",
         "Workshop",
         "Others"
-]
+]   
     #========================================================================
     #DUPLICATOR DETECTION
     def is_duplicate_event(self, name, date, time, exclude_id=None):
@@ -122,7 +124,9 @@ class EventManager:
             with open("events.json", "r") as file:
                 data = json.load(file)
                 return [Event.from_dict(event) for event in data]
-        except FileNotFoundError:
+        except (FileNotFoundError, json.JSONDecodeError):
+            with open("events.json", "w") as file:
+                json.dump([], file)
             return []
         
     #SAVE EVENTS IN JSON FILE
@@ -655,3 +659,83 @@ class EventManager:
         print(f"Capacity    : {event.capacity}")
         print(f"Description : {event.description}")
         print("=" * 50)
+    
+    #=========================================================================
+    #LOAD PARTICIPANTS
+    def load_participants(self):
+
+        try:
+            with open("participants.json", "r") as file:
+                data = json.load(file)
+                return [Participant.from_dict(participant) for participant in data]
+    
+        except (FileNotFoundError, json.JSONDecodeError):
+        
+            print("participants.json not found or is invalid.")
+            print("Creating a new participants.json file...")
+    
+            with open("participants.json", "w") as file:
+                json.dump([], file, indent=4)
+    
+            return []
+    
+    #=========================================================================
+    #SAVE PARTICIPANTS
+    def save_participants(self):
+
+        with open("participants.json", "w") as file:
+            json.dump(
+                [participant.to_dict() for participant in self.participants],
+                file,
+                indent=4
+            )
+    
+    #=========================================================================
+    #GET PARTICIPANT BY ID 
+    def get_next_participant_id(self):
+
+        used_ids = {participant.id for participant in self.participants}
+
+        next_id = 1
+
+        while next_id in used_ids:
+            next_id += 1
+
+        return next_id
+
+
+    #=========================================================================
+    #FIND PARTICIPANT BY ID
+    def find_participant_by_id(self, participant_id):
+
+        for participant in self.participants:
+
+            if participant.id == participant_id:
+                return participant
+
+        return None
+
+    #=========================================================================
+    #FIND PARTICIPANT BY EVENT ID
+    def find_participants_by_event(self, event_id):
+
+        return [
+            participant
+            for participant in self.participants
+            if participant.event_id == event_id
+        ]
+    
+
+    #=========================================================================
+    #PARTICIPANT ALREADY REGISTERED CHECK
+    def is_already_registered(self, event_id, email):
+
+        for participant in self.participants:
+
+            if (
+                participant.event_id == event_id
+                and participant.email.lower() == email.lower()
+            ):
+                return True
+
+        return False
