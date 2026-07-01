@@ -1,25 +1,5 @@
 [
     {
-        "id": 1,
-        "name": "Graduation Ceremony 2026",
-        "category": "Ceremony",
-        "date": "2026-07-15",
-        "time": "10:00",
-        "description": "Annual graduation ceremony for the Class of 2026.",
-        "capacity": 500,
-        "location": "University Gymnasium"
-    },
-    {
-        "id": 2,
-        "name": "Python Programming Workshop",
-        "category": "Workshop",
-        "date": "2026-07-20",
-        "time": "08:30",
-        "description": "Hands-on Python programming workshop for beginners.",
-        "capacity": 50,
-        "location": "Computer Laboratory 1"
-    },
-    {
         "id": 3,
         "name": "AI and Machine Learning Seminar",
         "category": "Seminar",
@@ -30,14 +10,14 @@
         "location": "Engineering Auditorium"
     },
     {
-        "id": 4,
-        "name": "Student Leadership Training",
-        "category": "Training",
-        "date": "2026-08-10",
+        "id": 20,
+        "name": "AI Seminar",
+        "category": "Seminar",
+        "date": "2026-08-05",
         "time": "09:00",
-        "description": "Leadership development for student organization officers.",
-        "capacity": 120,
-        "location": "Conference Hall"
+        "description": "A Seminar About AI",
+        "capacity": 50,
+        "location": "Room 101"
     },
     {
         "id": 5,
@@ -50,26 +30,6 @@
         "location": "University Grounds"
     },
     {
-        "id": 6,
-        "name": "Research Proposal Defense",
-        "category": "Academic",
-        "date": "2026-08-22",
-        "time": "13:00",
-        "description": "Presentation and defense of undergraduate research proposals.",
-        "capacity": 80,
-        "location": "Room 305"
-    },
-    {
-        "id": 7,
-        "name": "Hackathon 2026",
-        "category": "Competition",
-        "date": "2026-09-01",
-        "time": "08:00",
-        "description": "24-hour programming competition for students.",
-        "capacity": 100,
-        "location": "Innovation Hub"
-    },
-    {
         "id": 8,
         "name": "Career Fair",
         "category": "Career",
@@ -78,46 +38,6 @@
         "description": "Meet employers and explore internship opportunities.",
         "capacity": 500,
         "location": "Covered Court"
-    },
-    {
-        "id": 9,
-        "name": "Information Technology Symposium",
-        "category": "Conference",
-        "date": "2026-09-18",
-        "time": "09:30",
-        "description": "Conference featuring experts in information technology.",
-        "capacity": 350,
-        "location": "Main Auditorium"
-    },
-    {
-        "id": 10,
-        "name": "Freshmen Orientation",
-        "category": "Meeting",
-        "date": "2026-09-25",
-        "time": "08:00",
-        "description": "Orientation program for newly enrolled students.",
-        "capacity": 700,
-        "location": "University Gymnasium"
-    },
-    {
-        "id": 11,
-        "name": "Web Development Bootcamp",
-        "category": "Workshop",
-        "date": "2026-10-03",
-        "time": "09:00",
-        "description": "Learn HTML, CSS, JavaScript, and web development basics.",
-        "capacity": 60,
-        "location": "Computer Laboratory 2"
-    },
-    {
-        "id": 12,
-        "name": "Cybersecurity Awareness Seminar",
-        "category": "Seminar",
-        "date": "2026-10-08",
-        "time": "14:00",
-        "description": "Best practices for staying safe online.",
-        "capacity": 250,
-        "location": "Audio Visual Room"
     },
     {
         "id": 13,
@@ -130,14 +50,34 @@
         "location": "Student Center"
     },
     {
-        "id": 14,
-        "name": "Faculty Meeting",
-        "category": "Meeting",
-        "date": "2026-10-20",
-        "time": "15:00",
-        "description": "Monthly meeting of all university faculty members.",
-        "capacity": 120,
-        "location": "Conference Room A"
+        "id": 19,
+        "name": "Christmas Festival",
+        "category": "Festival",
+        "date": "2026-12-20",
+        "time": "18:00",
+        "description": "Annual Christmas celebration with performances and food stalls.",
+        "capacity": 1000,
+        "location": "University Plaza"
+    },
+    {
+        "id": 18,
+        "name": "Christmas Outreach Program",
+        "category": "Community Service",
+        "date": "2026-12-20",
+        "time": "09:00",
+        "description": "Gift-giving activity for local communities.",
+        "capacity": 150,
+        "location": "Community Center"
+    },
+    {
+        "id": 12,
+        "name": "Cybersecurity Awareness Seminar",
+        "category": "Seminar",
+        "date": "2026-10-08",
+        "time": "14:00",
+        "description": "Best practices for staying safe online.",
+        "capacity": 250,
+        "location": "Audio Visual Room"
     },
     {
         "id": 15,
@@ -150,6 +90,16 @@
         "location": "Business Building"
     },
     {
+        "id": 14,
+        "name": "Faculty Meeting",
+        "category": "Meeting",
+        "date": "2026-10-20",
+        "time": "15:00",
+        "description": "Monthly meeting of all university faculty members.",
+        "capacity": 120,
+        "location": "Conference Room A"
+    },
+    {
         "id": 16,
         "name": "First Aid Training",
         "category": "Training",
@@ -158,6 +108,86 @@
         "description": "Basic first aid and emergency response training.",
         "capacity": 80,
         "location": "Nursing Skills Laboratory"
+    },
+    {
+        "id": 10,
+        "name": "Freshmen Orientation",
+        "category": "Meeting",
+        "date": "2026-09-25",
+        "time": "08:00",
+        "description": "Orientation program for newly enrolled students.",
+        "capacity": 700,
+        "location": "University Gymnasium"
+    },
+    {
+        "id": 1,
+        "name": "Graduation Ceremony 2026",
+        "category": "Ceremony",
+        "date": "2026-07-15",
+        "time": "10:00",
+        "description": "Annual graduation ceremony for the Class of 2026.",
+        "capacity": 500,
+        "location": "University Gymnasium"
+    },
+    {
+        "id": 7,
+        "name": "Hackathon 2026",
+        "category": "Competition",
+        "date": "2026-09-01",
+        "time": "08:00",
+        "description": "24-hour programming competition for students.",
+        "capacity": 100,
+        "location": "Innovation Hub"
+    },
+    {
+        "id": 9,
+        "name": "Information Technology Symposium",
+        "category": "Conference",
+        "date": "2026-09-18",
+        "time": "09:30",
+        "description": "Conference featuring experts in information technology.",
+        "capacity": 350,
+        "location": "Main Auditorium"
+    },
+    {
+        "id": 2,
+        "name": "Python Programming Workshop",
+        "category": "Workshop",
+        "date": "2026-07-20",
+        "time": "08:30",
+        "description": "Hands-on Python programming workshop for beginners.",
+        "capacity": 50,
+        "location": "Computer Laboratory 1"
+    },
+    {
+        "id": 22,
+        "name": "Relationship Anniversary",
+        "category": "Others",
+        "date": "2026-08-17",
+        "time": "10:00",
+        "description": "Celebrate our Relationship Anniversary",
+        "capacity": 20,
+        "location": "Tacloban"
+    },
+    {
+        "id": 6,
+        "name": "Research Proposal Defense",
+        "category": "Academic",
+        "date": "2026-08-22",
+        "time": "13:00",
+        "description": "Presentation and defense of undergraduate research proposals.",
+        "capacity": 80,
+        "location": "Room 305"
+    },
+    {
+        "id": 4,
+        "name": "Student Leadership Training",
+        "category": "Training",
+        "date": "2026-08-10",
+        "time": "09:00",
+        "description": "Leadership development for student organization officers.",
+        "capacity": 120,
+        "location": "Conference Hall"
     },
     {
         "id": 17,
@@ -170,24 +200,13 @@
         "location": "City Watershed"
     },
     {
-        "id": 18,
-        "name": "Christmas Outreach Program",
-        "category": "Community Service",
-        "date": "2026-12-12",
+        "id": 11,
+        "name": "Web Development Bootcamp",
+        "category": "Workshop",
+        "date": "2026-10-03",
         "time": "09:00",
-        "description": "Gift-giving activity for local communities.",
-        "capacity": 150,
-        "location": "Community Center"
-    },
-    {
-        "id": 19,
-        "name": "Christmas Festival",
-        "category": "Festival",
-        "date": "2026-12-20",
-        "time": "18:00",
-        "description": "Annual Christmas celebration with performances and food stalls.",
-        "capacity": 1000,
-        "location": "University Plaza"
+        "description": "Learn HTML, CSS, JavaScript, and web development basics.",
+        "capacity": 60,
+        "location": "Computer Laboratory 2"
     }
-    
 ]
