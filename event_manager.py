@@ -24,18 +24,56 @@ class EventManager:
 ]
     #========================================================================
     #DUPLICATOR DETECTION
-    def is_duplicate_event(self, name, date, time):
+    def is_duplicate_event(self, name, date, time, exclude_id=None):
+
+        print(f"\nChecking new event:")
+        print(f"Name : '{name}'")
+        print(f"Date : '{date}'")
+        print(f"Time : '{time}'")
 
         for event in self.events:
 
+            print("\nComparing with:")
+            print(f"Name : '{event.name}'")
+            print(f"Date : '{event.date}'")
+            print(f"Time : '{event.time}'")
+
+            print("Name Match:", event.name.strip().lower() == name.strip().lower())
+            print("Date Match:", event.date == date)
+            print("Time Match:", event.time == time)
+
+            if exclude_id is not None and event.id == exclude_id:
+                continue
+
             if (
-                event.name.lower() == name.lower()
+                event.name.strip().lower() == name.strip().lower()
                 and event.date == date
                 and event.time == time
             ):
+                print(">>> DUPLICATE FOUND <<<")
                 return True
 
+        print(">>> NO DUPLICATE <<<")
         return False
+
+    #========================================================================
+    #CONFLICT DETECTION
+    def has_schedule_conflict(self, location, date, time, exclude_id=None):
+
+        for event in self.events:
+
+            if exclude_id is not None and event.id == exclude_id:
+                continue
+
+            if (
+                event.location.lower() == location.lower()
+                and event.date == date
+                and event.time == time
+            ):
+                return event
+
+        return None
+
 
     #========================================================================    
     #VALIDATE DATE AND TIME
@@ -45,7 +83,7 @@ class EventManager:
 
             value = input(prompt).strip()
 
-            if allow_empty and value == "":
+            if allow_empty and not value :
                 return ""
 
             try:
@@ -153,7 +191,24 @@ class EventManager:
         location = input("Enter event location: ")
         category = self.select_category()
 
+        if self.is_duplicate_event(name, date, time):
+            print("\nDuplicate event detected. Event not added.")
+            return
         
+        conflict = self.has_schedule_conflict(
+            location,
+            date,
+            time
+        )
+        if conflict:
+            print("\nSchedule conflict detected!")
+            print(f"'{conflict.name}' is already scheduled.")
+            print(f"Location : {conflict.location}")
+            print(f"Date     : {conflict.date}")
+            print(f"Time     : {conflict.time}")
+            return
+        
+
         new_event = Event(
             event_id=self.get_next_id(),
             name=name,
@@ -164,9 +219,7 @@ class EventManager:
             capacity=capacity,
             location=location
         )
-        if self.is_duplicate_event(name, date, time):
-            print("\nDuplicate event detected. Event not added.")
-            return
+       
             
         self.events.append(new_event)
         self.save_events()
@@ -200,16 +253,44 @@ class EventManager:
         print("\nLeave blank to keep the current value.")
 
         new_name = input(f"Name ({event.name}): ")
-        new_date = self.validate_input(f"Date ({event.date}) [Press Enter to Keep Date]: ", "%Y-%m-%d", "Invalid date format. Please use YYYY-MM-DD.")
-        new_time = self.validate_input(f"Time ({event.time}) [Press Enter to Keep Time]: ", "%H:%M", "Invalid time format. Please use HH:MM (24-hour format).")
+        new_date = self.validate_input(f"Date ({event.date}) [Press Enter to Keep Date]: ", "%Y-%m-%d", "Invalid date format. Please use YYYY-MM-DD.", allow_empty=True)
+        new_time = self.validate_input(f"Time ({event.time}) [Press Enter to Keep Time]: ", "%H:%M", "Invalid time format. Please use HH:MM (24-hour format).", allow_empty=True)
         new_description = input(f"Description ({event.description}): ")
         new_capacity = self.validate_capacity(f"Capacity ({event.capacity}) [Press Enter to Keep]: ", allow_empty=True)
         new_location = input(f"Location ({event.location}): ")
-
-        change_category = input("Change category? (Y/N): ").lower()
-
+        new_category = event.category
+        change_category = input(f"Change category? (Y/N) [Current: {event.category}]: ").lower()
         if change_category == "y":
-            event.category = self.select_category()
+            new_category = self.select_category()
+        
+        check_name = new_name if new_name else event.name
+        check_date = new_date if new_date else event.date
+        check_time = new_time if new_time else event.time
+        check_location = new_location if new_location else event.location
+
+        if self.is_duplicate_event(
+            check_name,
+            check_date,
+            check_time,
+            exclude_id=event.id
+        ):
+            print("\nDuplicate event detected. Event not updated.")
+            return
+        
+        conflict = self.has_schedule_conflict(
+            check_location,
+            check_date,
+            check_time,
+            exclude_id=event.id
+        )
+
+        if conflict:
+            print("\nSchedule conflict detected!")
+            print(f"'{conflict.name}' is already scheduled.")
+            print(f"Location : {conflict.location}")
+            print(f"Date     : {conflict.date}")
+            print(f"Time     : {conflict.time}")
+            return
 
         if new_name:
             event.name = new_name
@@ -223,9 +304,18 @@ class EventManager:
         if new_description:
             event.description = new_description
 
-        if new_capacity == "":
-            event.capacity = new_capacity
-
+        if new_capacity:
+            try:
+                capacity = int(new_capacity)
+        
+                if capacity > 0:
+                    event.capacity = capacity
+                else:
+                    print("Capacity must be greater than 0.")
+        
+            except ValueError:
+                print("Please enter a valid number.")
+        
         if new_location:
             event.location = new_location
 
@@ -259,36 +349,51 @@ class EventManager:
         while True:
 
             print("\n===== SORT EVENTS =====")
-            print("1. Sort by Date")
-            print("2. Sort by Name")
-            print("3. Sort by Category")
-            print("4. Sort by Capacity")
-            print("5. Sort by Location")
-            print("6. Back")
+            print("1. Sort by ID")
+            print("2. Sort by Date")
+            print("3. Sort by Name")
+            print("4. Sort by Category")
+            print("5. Sort by Capacity")
+            print("6. Sort by Location")
+            print("7. Back")
 
             choice = input("Enter your choice: ")
 
             if choice == "1":
+
+                print("\nChoose sort Order:")
+                print("1. Ascending")
+                print("2. Descending\n")
+                order = input("Sort Order: ")
+                if order == "1":
+                    self.events.sort(key = lambda event: event.id)
+                elif order == "2":
+                    self.events.sort(key = lambda event: event.id, reverse = True)
+                else:
+                    print("Invalid Sort Order")
+                    continue
+
+            elif choice == "2":
                 self.events.sort(key=lambda event: event.date)
                 print("\nEvents sorted by date.")
 
-            elif choice == "2":
+            elif choice == "3":
                 self.events.sort(key=lambda event: event.name.lower())
                 print("\nEvents sorted by name.")
 
-            elif choice == "3":
+            elif choice == "4":
                 self.events.sort(key=lambda event: event.category.lower())
                 print("\nEvents sorted by category.")
 
-            elif choice == "4":
+            elif choice == "5":
                 self.events.sort(key=lambda event: event.capacity)
                 print("\nEvents sorted by capacity.")
 
-            elif choice == "5":
+            elif choice == "6":
                 self.events.sort(key=lambda event: event.location.lower())
                 print("\nEvents sorted by location.")
 
-            elif choice == "6":
+            elif choice == "7":
                 break
 
             else:
@@ -459,18 +564,19 @@ class EventManager:
 
         search_term = input("\nEnter a keyword to search: ").strip().lower()
 
-        found_events = [event for event in self.events]
+        if not search_term:
+            print("Search term cannot be empty.")
+            return
 
-        for event in self.events:
-
+        found_events = [
+            event for event in self.events
             if (
                 search_term in event.name.lower()
                 or search_term in event.category.lower()
                 or search_term in event.description.lower()
                 or search_term in event.location.lower()
-            ):
-                found_events.append(event)
-
+            )
+        ]
         if not found_events:
             print("\nNo matching events found.")
             return
