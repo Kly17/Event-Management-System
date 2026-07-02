@@ -1,11 +1,12 @@
 class Participant:
 
-    def __init__(self, id, event_id, name, email, contact):
+    def __init__(self, id, event_id, name, email, contact, registration_date):
         self.id = id
         self.event_id = event_id
         self.name = name
         self.email = email
         self.contact = contact
+        self.registration_date = registration_date
 
     def to_dict(self):
         return {

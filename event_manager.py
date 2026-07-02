@@ -182,7 +182,51 @@ class EventManager:
             except ValueError:
                 print("Please enter a valid number.")
     
-    
+    #========================================================================
+    #EVENT MENU
+    def event_menu(self):
+
+        while True:
+
+            print("\n========== EVENT MANAGEMENT ==========")
+            print("1. Add Event")
+            print("2. View Events")
+            print("3. Edit Event")
+            print("4. Delete Event")
+            print("5. Search Event")
+            print("6. Sort Events")
+            print("7. Filter Events")
+            print("8. Back")
+
+            choice = input("\nEnter your choice: ")
+
+            if choice == "1":
+                self.add_event()
+
+            elif choice == "2":
+                self.view_events()
+
+            elif choice == "3":
+                self.edit_event()
+
+            elif choice == "4":
+                self.delete_event()
+
+            elif choice == "5":
+                self.search_event()
+
+            elif choice == "6":
+                self.sort_events()
+
+            elif choice == "7":
+                self.filter_events()
+
+            elif choice == "8":
+                break
+
+            else:
+                print("Invalid choice.")
+
     #=========================================================================
     #ADD EVENTS
     def add_event(self):
@@ -330,7 +374,7 @@ class EventManager:
     
     #=========================================================================
     #VIEW EVENTS PAGINATED
-    def view_events_paginated(self):
+    def view_events(self):
        
         if not self.events:
             print("\nNo events available.")
@@ -707,6 +751,42 @@ class EventManager:
         print("=" * 50)
     
     #=========================================================================
+    #PARTICIPANT MENU
+    def participant_menu(self):
+
+        while True:
+
+            print("\n========== PARTICIPANT MANAGEMENT ==========")
+            print("1. Register Participant")
+            print("2. View Participants")
+            print("3. Search Participant")
+            print("4. Edit Participant")
+            print("5. Delete Participant")
+            print("6. Back")
+
+            choice = input("\nEnter your choice: ")
+
+            if choice == "1":
+                self.register_participant()
+
+            elif choice == "2":
+                self.view_participants()
+
+            elif choice == "3":
+                self.search_participant()
+
+            elif choice == "4":
+                self.edit_participant()
+
+            elif choice == "5":
+                self.delete_participant()
+
+            elif choice == "6":
+                break
+
+            else:
+                print("Invalid choice.")
+    #=========================================================================
     #LOAD PARTICIPANTS
     def load_participants(self):
 
@@ -765,6 +845,7 @@ class EventManager:
     #FIND PARTICIPANT BY EVENT ID
     def find_participants_by_event(self, event_id):
 
+
         return [
             participant
             for participant in self.participants
@@ -785,3 +866,81 @@ class EventManager:
                 return True
 
         return False
+    
+    #=========================================================================
+    #REGISTER PARTICIPANT
+    def register_participant(self):
+        if not self.events:
+            print("\nNo events available for registration.")
+            return
+
+        print("\n===== REGISTER FOR EVENT =====")
+        for event in self.events:
+            print(f"ID: {event.id} | Name: {event.name} | Date: {event.date} | Time: {event.time} | Location: {event.location}")
+
+        try:
+            event_id = int(input("\nEnter the Event ID to register for: "))
+
+        except ValueError:
+            print("Please enter a valid number.")
+            return
+
+        event = self.find_event_by_id(event_id)
+
+        if event is None:
+            print("Event not found.")
+            return
+
+        registered = len(self.find_participants_by_event(event_id))
+
+        if registered >= event.capacity:
+            print("Event is full. Registration closed.")
+            return
+
+        print(f"\nRegistering for '{event.name}' on {event.date} at {event.time} in {event.location}.")
+        print(f"Current Registrations: {registered}/{event.capacity}")
+
+        print("\nPlease provide your details for registration.")
+        
+        while True:
+
+            name = input("Enter your name: ")
+            if name:
+                break
+            print("Name cannot be empty. Please try again.")
+            
+            
+            email = input("Enter your email: ")
+            if email:
+                break
+            print("Email cannot be empty. Please try again.")
+            
+            contact = input("Enter your contact number: ")
+            if contact:
+                break
+            print("Contact number cannot be empty. Please try again.")
+
+        if self.is_already_registered(event_id, email):
+                print("You are already registered for this event.")
+                return
+
+        new_participant = Participant(
+            id=self.get_next_participant_id(),
+            event_id=event_id,
+            name=name,
+            email=email,
+            contact=contact,
+            registration_date=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        )
+
+        self.participants.append(new_participant)
+        self.save_participants()
+
+        print("\n==========================================")
+        print("Participant registered successfully!")
+        print("==========================================")
+        print(f"Participant ID : {new_participant.id}")
+        print(f"Event          : {event.name}")
+        print(f"Participant    : {new_participant.name}")
+        print(f"Email          : {new_participant.email}")
+        print(f"Contact        : {new_participant.contact}")
