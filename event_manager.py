@@ -9,6 +9,7 @@ class EventManager:
     #CONSTRUCTOR
     def __init__(self):
         self.events = self.load_events()
+        self.page_size = 5
         self.participants = self.load_participants()
         self.categories = [
         "Academic",
@@ -327,21 +328,66 @@ class EventManager:
 
         print("\nEvent updated successfully!")
     
-
     #=========================================================================
-    #VIEW EVENTS
-    def view_events(self):
-
+    #VIEW EVENTS PAGINATED
+    def view_events_paginated(self):
+       
         if not self.events:
-            print("\nNo events found.")
+            print("\nNo events available.")
             return
+        
+        page = 0
 
-        print("\n===== EVENT LIST =====")
+        while True:
+            total_events = (len(self.events) )
+            total_pages = (total_events - 1)//self.page_size + 1
 
-        for event in self.events:
-            self.display_event(event)
+            start = page * self.page_size
+            end = start + self.page_size
 
-    
+            current_page_events = self.events[start:end]
+
+            print (f"\n===== EVENT LIST (Page {page + 1} of {total_pages}) =====")
+            print(f"Showing events {start + 1} to {min(end, total_events)} of {total_events}\n")
+            print("=" * 50)
+
+            for event in current_page_events:
+                self.display_event(event)
+            
+            print("\nNavigation Options:")
+            print("N - Next Page")
+            print("P - Previous Page")
+            print("S - Go to Specific Page")
+            print("E - Exit to Main Menu")
+
+            choice = input("Enter your choice: ").strip().lower()
+
+            if choice == "n":
+                if page < total_pages - 1:
+                    page += 1
+                else:
+                    print("You are on the last page.")
+            elif choice == "p":
+                if page > 0:
+                    page -= 1
+                else:
+                    print("You are on the first page.")
+            elif choice == "s":
+                try:
+                    specific_page = int(input(f"Enter page number (1 to {total_pages}): ")) - 1
+                    if 0 <= specific_page < total_pages:
+                        page = specific_page
+                    else:
+                        print("Invalid page number.")
+                except ValueError:
+                    print("Please enter a valid number.")
+            elif choice == "e":
+                break
+            else:
+                print("Invalid choice. Please try again.")
+            
+            
+
     #=========================================================================
     #SORT EVENTS
     def sort_events(self):

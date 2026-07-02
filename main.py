@@ -24,7 +24,7 @@ while True:
         manager.add_event()
     
     elif choice == "3":
-        manager.view_events()
+        manager.view_events_paginated()
 
     elif choice == "4":
         manager.edit_event()
