@@ -994,21 +994,21 @@ class EventManager:
         if not self.participants:
             print("\nNo participants found.")
             return
-    
+
         search_term = input(
             "\nEnter Participant ID, Name, Email, Contact, or Event Name: "
         ).strip().lower()
-    
+
         found_participants = []
-    
+
         for participant in self.participants:
-        
+
             event = self.find_event_by_id(participant.event_id)
-    
+
             event_name = ""
             if event:
                 event_name = event.name.lower()
-    
+
             if (
                 search_term == str(participant.id)
                 or search_term in participant.name.lower()
@@ -1017,12 +1017,65 @@ class EventManager:
                 or search_term in event_name
             ):
                 found_participants.append(participant)
-    
+
         if not found_participants:
             print("\nNo matching participants found.")
             return
-    
+
         print(f"\nFound {len(found_participants)} participant(s).\n")
-    
+
         for participant in found_participants:
             self.display_participant(participant)
+    
+    #=========================================================================
+    #EDIT PARTICIPANTS
+    def edit_participant(self):
+
+        if not self.participants:
+            print("\nNo participants available to edit.")
+            return
+    
+        self.view_participants()
+    
+        try:
+            participant_id = int(input("\nEnter the Participant ID to edit: "))
+    
+        except ValueError:
+            print("Please enter a valid number.")
+            return
+    
+        participant = self.find_participant_by_id(participant_id)
+    
+        if participant is None:
+            print("Participant not found.")
+            return
+    
+        print("\nLeave blank to keep the current value.")
+    
+        new_name = input(f"Name ({participant.name}): ").strip()
+        new_email = input(f"Email ({participant.email}): ").strip()
+        new_contact = input(f"Contact ({participant.contact}): ").strip()
+    
+        # Use existing values if left blank
+        check_email = new_email if new_email else participant.email
+    
+        # Prevent duplicate registration
+        if (
+            check_email.lower() != participant.email.lower()
+            and self.is_already_registered(participant.event_id, check_email)
+        ):
+            print("\nAnother participant is already registered for this event using that email.")
+            return
+    
+        if new_name:
+            participant.name = new_name
+    
+        if new_email:
+            participant.email = new_email
+    
+        if new_contact:
+            participant.contact = new_contact
+    
+        self.save_participants()
+    
+        print("\nParticipant updated successfully!")
