@@ -751,6 +751,19 @@ class EventManager:
         print("=" * 50)
     
     #=========================================================================
+    #NO VALIDATE NON EMPTY INPUT
+    def validate_non_empty(self, prompt):
+
+        while True:
+
+            value = input(prompt).strip()
+
+            if value:
+                return value
+
+            print("This field cannot be empty.")
+
+    #=========================================================================
     #PARTICIPANT MENU
     def participant_menu(self):
 
@@ -904,21 +917,14 @@ class EventManager:
         
         while True:
 
-            name = input("Enter your name: ")
-            if name:
-                break
-            print("Name cannot be empty. Please try again.")
-            
-            
-            email = input("Enter your email: ")
-            if email:
-                break
-            print("Email cannot be empty. Please try again.")
-            
-            contact = input("Enter your contact number: ")
-            if contact:
-                break
-            print("Contact number cannot be empty. Please try again.")
+            name = self.validate_non_empty("Enter your name: ")
+            email = self.validate_non_empty("Enter your email: ")
+            contact = self.validate_non_empty("Enter your contact number: ")
+
+            if not name or not email or not contact:
+                print("All fields are required. Please try again.")
+                continue
+            break
 
         if self.is_already_registered(event_id, email):
                 print("You are already registered for this event.")
@@ -944,3 +950,79 @@ class EventManager:
         print(f"Participant    : {new_participant.name}")
         print(f"Email          : {new_participant.email}")
         print(f"Contact        : {new_participant.contact}")
+    
+    #=========================================================================
+    #DISPLAY PARTICIPANTS
+    def display_participant(self, participant):
+
+        event = self.find_event_by_id(participant.event_id)
+
+        if event:
+            event_name = event.name
+        else:
+            event_name = "Unknown Event"
+
+        print("----------------------------------------")
+        print(f"Participant ID : {participant.id}")
+        print(f"Event ID       : {participant.event_id}")
+        print(f"Event Name     : {event_name}")
+        print(f"Name           : {participant.name}")
+        print(f"Email          : {participant.email}")
+        print(f"Contact        : {participant.contact}")
+
+        # Only display this if your Participant class has it
+        if hasattr(participant, "registration_date"):
+            print(f"Registered On  : {participant.registration_date}")
+
+        print("----------------------------------------")
+
+    #==========================================================================
+    #VIEW PARTICIPANTS
+    def view_participants(self):
+
+        if not self.participants:
+            print("\nNo participants found.")
+            return
+        print("\n========== PARTICIPANTS ==========")
+        for participant in self.participants:
+            self.display_participant(participant)
+
+    #=========================================================================
+    #SEARCH PARTICIPANTS
+    def search_participant(self):
+
+        if not self.participants:
+            print("\nNo participants found.")
+            return
+    
+        search_term = input(
+            "\nEnter Participant ID, Name, Email, Contact, or Event Name: "
+        ).strip().lower()
+    
+        found_participants = []
+    
+        for participant in self.participants:
+        
+            event = self.find_event_by_id(participant.event_id)
+    
+            event_name = ""
+            if event:
+                event_name = event.name.lower()
+    
+            if (
+                search_term == str(participant.id)
+                or search_term in participant.name.lower()
+                or search_term in participant.email.lower()
+                or search_term in participant.contact.lower()
+                or search_term in event_name
+            ):
+                found_participants.append(participant)
+    
+        if not found_participants:
+            print("\nNo matching participants found.")
+            return
+    
+        print(f"\nFound {len(found_participants)} participant(s).\n")
+    
+        for participant in found_participants:
+            self.display_participant(participant)

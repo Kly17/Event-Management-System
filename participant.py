@@ -14,7 +14,8 @@ class Participant:
             "event_id": self.event_id,
             "name": self.name,
             "email": self.email,
-            "contact": self.contact
+            "contact": self.contact,
+            "registration_date": self.registration_date
         }
 
     @classmethod
@@ -24,5 +25,6 @@ class Participant:
             data["event_id"],
             data["name"],
             data["email"],
-            data["contact"]
+            data["contact"],
+            data["registration_date"]
         )
