@@ -775,7 +775,8 @@ class EventManager:
             print("3. Search Participant")
             print("4. Edit Participant")
             print("5. Delete Participant")
-            print("6. Back")
+            print("6. View Participants by Event")
+            print("7. Back")
 
             choice = input("\nEnter your choice: ")
 
@@ -793,8 +794,11 @@ class EventManager:
 
             elif choice == "5":
                 self.delete_participant()
-
+            
             elif choice == "6":
+                self.view_participants_by_event()
+
+            elif choice == "7":
                 break
 
             else:
@@ -1087,39 +1091,88 @@ class EventManager:
         if not self.participants:
             print("\nNo participants available.")
             return
-    
+
         self.view_participants()
-    
+
         try:
             participant_id = int(input("\nEnter the Participant ID to delete: "))
-    
+
         except ValueError:
             print("Please enter a valid number.")
             return
-    
+
         participant = self.find_participant_by_id(participant_id)
-    
+
         if participant is None:
             print("Participant not found.")
             return
-    
+
         event = self.find_event_by_id(participant.event_id)
-    
+
         print("\n========== PARTICIPANT DETAILS ==========")
         print(f"Participant ID : {participant.id}")
         print(f"Name           : {participant.name}")
         print(f"Email          : {participant.email}")
         print(f"Contact        : {participant.contact}")
         print(f"Event          : {event.name if event else 'Unknown Event'}")
-    
+
         confirm = input("\nAre you sure you want to delete this participant? (Y/N): ").strip().lower()
-    
+
         if confirm != "y":
             print("\nDeletion cancelled.")
             return
-    
+
         self.participants.remove(participant)
-    
+
         self.save_participants()
-    
+
         print("\nParticipant deleted successfully!")
+
+    #=========================================================================
+    #VIEW PARTICIPANTS BY EVENT
+    def view_participants_by_event(self):
+
+        if not self.events:
+            print("\nNo events available.")
+            return
+
+        print("\n========== EVENTS ==========")
+
+        for event in self.events:
+            print(f"ID: {event.id} | {event.name}")
+
+        try:
+            event_id = int(input("\nEnter Event ID: "))
+
+        except ValueError:
+            print("Please enter a valid number.")
+            return
+
+        event = self.find_event_by_id(event_id)
+
+        if event is None:
+            print("Event not found.")
+            return
+
+        participants = self.find_participants_by_event(event_id)
+
+        print("\n========================================")
+        print(f"Participants for: {event.name}")
+        print("========================================")
+
+        if not participants:
+            print("\nNo participants registered for this event.")
+            return
+
+        for participant in participants:
+            self.display_participant(participant)
+
+        print("----------------------------------------")
+        print(f"Total Registered : {len(participants)}")
+        print(f"Capacity         : {event.capacity}")
+        print(f"Remaining Slots  : {event.capacity - len(participants)}")
+
+        if len(participants) >= event.capacity:
+            print("Status           : FULL")
+        else:
+            print("Status           : OPEN")
