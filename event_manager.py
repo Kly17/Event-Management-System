@@ -1034,11 +1034,64 @@ class EventManager:
         if not self.participants:
             print("\nNo participants available to edit.")
             return
+
+        self.view_participants()
+
+        try:
+            participant_id = int(input("\nEnter the Participant ID to edit: "))
+
+        except ValueError:
+            print("Please enter a valid number.")
+            return
+
+        participant = self.find_participant_by_id(participant_id)
+
+        if participant is None:
+            print("Participant not found.")
+            return
+
+        print("\nLeave blank to keep the current value.")
+
+        new_name = input(f"Name ({participant.name}): ").strip()
+        new_email = input(f"Email ({participant.email}): ").strip()
+        new_contact = input(f"Contact ({participant.contact}): ").strip()
+
+        # Use existing values if left blank
+        check_email = new_email if new_email else participant.email
+
+        # Prevent duplicate registration
+        if (
+            check_email.lower() != participant.email.lower()
+            and self.is_already_registered(participant.event_id, check_email)
+        ):
+            print("\nAnother participant is already registered for this event using that email.")
+            return
+
+        if new_name:
+            participant.name = new_name
+
+        if new_email:
+            participant.email = new_email
+
+        if new_contact:
+            participant.contact = new_contact
+
+        self.save_participants()
+
+        print("\nParticipant updated successfully!")
+    
+    #=========================================================================
+    #DELETE PARTICIPANTS
+    def delete_participant(self):
+
+        if not self.participants:
+            print("\nNo participants available.")
+            return
     
         self.view_participants()
     
         try:
-            participant_id = int(input("\nEnter the Participant ID to edit: "))
+            participant_id = int(input("\nEnter the Participant ID to delete: "))
     
         except ValueError:
             print("Please enter a valid number.")
@@ -1050,32 +1103,23 @@ class EventManager:
             print("Participant not found.")
             return
     
-        print("\nLeave blank to keep the current value.")
+        event = self.find_event_by_id(participant.event_id)
     
-        new_name = input(f"Name ({participant.name}): ").strip()
-        new_email = input(f"Email ({participant.email}): ").strip()
-        new_contact = input(f"Contact ({participant.contact}): ").strip()
+        print("\n========== PARTICIPANT DETAILS ==========")
+        print(f"Participant ID : {participant.id}")
+        print(f"Name           : {participant.name}")
+        print(f"Email          : {participant.email}")
+        print(f"Contact        : {participant.contact}")
+        print(f"Event          : {event.name if event else 'Unknown Event'}")
     
-        # Use existing values if left blank
-        check_email = new_email if new_email else participant.email
+        confirm = input("\nAre you sure you want to delete this participant? (Y/N): ").strip().lower()
     
-        # Prevent duplicate registration
-        if (
-            check_email.lower() != participant.email.lower()
-            and self.is_already_registered(participant.event_id, check_email)
-        ):
-            print("\nAnother participant is already registered for this event using that email.")
+        if confirm != "y":
+            print("\nDeletion cancelled.")
             return
     
-        if new_name:
-            participant.name = new_name
-    
-        if new_email:
-            participant.email = new_email
-    
-        if new_contact:
-            participant.contact = new_contact
+        self.participants.remove(participant)
     
         self.save_participants()
     
-        print("\nParticipant updated successfully!")
+        print("\nParticipant deleted successfully!")
