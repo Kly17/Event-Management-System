@@ -8,7 +8,8 @@ while True:
     print("1. Event Management")
     print("2. Participant Management")
     print("3. Dashboard")
-    print("4. Exit")
+    print("4. Attendance Report")
+    print("5. Exit")
 
     choice = input("Enter your choice: ")
 
@@ -19,6 +20,8 @@ while True:
     elif choice == "3":
         manager.dashboard()
     elif choice == "4":
+        manager.attendance_report()
+    elif choice == "5":
         print("Exiting...")
         break
     else:

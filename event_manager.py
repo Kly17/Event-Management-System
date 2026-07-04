@@ -1281,3 +1281,93 @@ class EventManager:
         self.save_participants()
 
         print("\nAttendance updated successfully!")
+    
+    #=========================================================================
+    #ATTENDANCE REPORT
+    def attendance_report(self):
+
+        if not self.events:
+            print("\nNo events available.")
+            return
+    
+        print("\n========== ATTENDANCE REPORT ==========")
+    
+        total_registered = 0
+        total_present = 0
+        total_absent = 0
+    
+        best_event = None
+        best_rate = -1
+    
+        worst_event = None
+        worst_rate = 101
+    
+        for event in self.events:
+        
+            participants = self.find_participants_by_event(event.id)
+    
+            registered = len(participants)
+    
+            present = sum(
+                participant.attendance
+                for participant in participants
+            )
+    
+            absent = registered - present
+    
+            if registered > 0:
+                rate = (present / registered) * 100
+            else:
+                rate = 0
+    
+            total_registered += registered
+            total_present += present
+            total_absent += absent
+    
+            if rate > best_rate:
+                best_rate = rate
+                best_event = event
+    
+            if rate < worst_rate:
+                worst_rate = rate
+                worst_event = event
+    
+            if rate == 100:
+                status = "Excellent"
+            elif rate >= 75:
+                status = "Good"
+            elif rate >= 50:
+                status = "Fair"
+            else:
+                status = "Poor"
+    
+            print("\n--------------------------------------------")
+            print(f"Event ID          : {event.id}")
+            print(f"Event Name        : {event.name}")
+            print(f"Registered        : {registered}")
+            print(f"Present           : {present}")
+            print(f"Absent            : {absent}")
+            print(f"Attendance Rate   : {rate:.2f}%")
+            print(f"Status            : {status}")
+    
+        print("\n============================================")
+        print("OVERALL SUMMARY")
+        print("============================================")
+    
+        overall_rate = (
+            (total_present / total_registered) * 100
+            if total_registered > 0
+            else 0
+        )
+    
+        print(f"Total Events      : {len(self.events)}")
+        print(f"Total Registered  : {total_registered}")
+        print(f"Total Present     : {total_present}")
+        print(f"Total Absent      : {total_absent}")
+        print(f"Overall Rate      : {overall_rate:.2f}%")
+    
+        if best_event:
+            print(f"\nBest Attendance   : {best_event.name} ({best_rate:.2f}%)")
+    
+        if worst_event:
+            print(f"Worst Attendance  : {worst_event.name} ({worst_rate:.2f}%)")
