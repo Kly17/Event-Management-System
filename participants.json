@@ -5,7 +5,8 @@
         "name": "Zaza Dela Cruz",
         "email": "zaza.delacruz@gmail.com",
         "contact": "09171234501",
-        "registration_date": "2026-07-01 09:15:21"
+        "registration_date": "2026-07-01 09:15:21",
+        "attendance": true
     },
     {
         "id": 2,
@@ -13,7 +14,8 @@
         "name": "Maria Santos",
         "email": "maria.santos@gmail.com",
         "contact": "09171234502",
-        "registration_date": "2026-07-01 09:18:05"
+        "registration_date": "2026-07-01 09:18:05",
+        "attendance": false
     },
     {
         "id": 3,
@@ -21,7 +23,8 @@
         "name": "Carlo Reyes",
         "email": "carlo.reyes@gmail.com",
         "contact": "09171234503",
-        "registration_date": "2026-07-02 08:20:11"
+        "registration_date": "2026-07-02 08:20:11",
+        "attendance": true
     },
     {
         "id": 4,
@@ -29,7 +32,8 @@
         "name": "Angela Cruz",
         "email": "angela.cruz@gmail.com",
         "contact": "09171234504",
-        "registration_date": "2026-07-02 08:25:47"
+        "registration_date": "2026-07-02 08:25:47",
+        "attendance": true
     },
     {
         "id": 5,
@@ -37,7 +41,8 @@
         "name": "Joshua Ramos",
         "email": "joshua.ramos@gmail.com",
         "contact": "09171234505",
-        "registration_date": "2026-07-03 10:00:15"
+        "registration_date": "2026-07-03 10:00:15",
+        "attendance": false
     },
     {
         "id": 6,
@@ -45,7 +50,8 @@
         "name": "Patricia Lim",
         "email": "patricia.lim@gmail.com",
         "contact": "09171234506",
-        "registration_date": "2026-07-03 10:04:32"
+        "registration_date": "2026-07-03 10:04:32",
+        "attendance": true
     },
     {
         "id": 7,
@@ -53,7 +59,8 @@
         "name": "Mark Villanueva",
         "email": "mark.v@gmail.com",
         "contact": "09171234507",
-        "registration_date": "2026-07-04 09:13:44"
+        "registration_date": "2026-07-04 09:13:44",
+        "attendance": true
     },
     {
         "id": 8,
@@ -61,7 +68,8 @@
         "name": "Nicole Mendoza",
         "email": "nicole.m@gmail.com",
         "contact": "09171234508",
-        "registration_date": "2026-07-04 09:20:10"
+        "registration_date": "2026-07-04 09:20:10",
+        "attendance": false
     },
     {
         "id": 9,
@@ -69,7 +77,8 @@
         "name": "Christian Flores",
         "email": "christian.f@gmail.com",
         "contact": "09171234509",
-        "registration_date": "2026-07-05 07:12:51"
+        "registration_date": "2026-07-05 07:12:51",
+        "attendance": true
     },
     {
         "id": 10,
@@ -77,7 +86,8 @@
         "name": "Alyssa Gomez",
         "email": "alyssa.g@gmail.com",
         "contact": "09171234510",
-        "registration_date": "2026-07-05 07:18:25"
+        "registration_date": "2026-07-05 07:18:25",
+        "attendance": true
     },
     {
         "id": 11,
@@ -85,7 +95,8 @@
         "name": "Kevin Torres",
         "email": "kevin.t@gmail.com",
         "contact": "09171234511",
-        "registration_date": "2026-07-06 13:05:00"
+        "registration_date": "2026-07-06 13:05:00",
+        "attendance": false
     },
     {
         "id": 12,
@@ -93,7 +104,8 @@
         "name": "Jasmine Perez",
         "email": "jasmine.p@gmail.com",
         "contact": "09171234512",
-        "registration_date": "2026-07-06 13:09:43"
+        "registration_date": "2026-07-06 13:09:43",
+        "attendance": true
     },
     {
         "id": 13,
@@ -101,7 +113,8 @@
         "name": "Bryan Castillo",
         "email": "bryan.c@gmail.com",
         "contact": "09171234513",
-        "registration_date": "2026-07-07 08:30:14"
+        "registration_date": "2026-07-07 08:30:14",
+        "attendance": true
     },
     {
         "id": 14,
@@ -109,7 +122,8 @@
         "name": "Ella Garcia",
         "email": "ella.g@gmail.com",
         "contact": "09171234514",
-        "registration_date": "2026-07-07 08:35:40"
+        "registration_date": "2026-07-07 08:35:40",
+        "attendance": false
     },
     {
         "id": 15,
@@ -117,7 +131,8 @@
         "name": "Nathan Lopez",
         "email": "nathan.l@gmail.com",
         "contact": "09171234515",
-        "registration_date": "2026-07-08 09:05:30"
+        "registration_date": "2026-07-08 09:05:30",
+        "attendance": true
     },
     {
         "id": 16,
@@ -125,7 +140,8 @@
         "name": "Sophia Diaz",
         "email": "sophia.d@gmail.com",
         "contact": "09171234516",
-        "registration_date": "2026-07-08 09:08:54"
+        "registration_date": "2026-07-08 09:08:54",
+        "attendance": true
     },
     {
         "id": 17,
@@ -133,7 +149,8 @@
         "name": "Daniel Bautista",
         "email": "daniel.b@gmail.com",
         "contact": "09171234517",
-        "registration_date": "2026-07-09 09:20:18"
+        "registration_date": "2026-07-09 09:20:18",
+        "attendance": false
     },
     {
         "id": 18,
@@ -141,7 +158,8 @@
         "name": "Faith Navarro",
         "email": "faith.n@gmail.com",
         "contact": "09171234518",
-        "registration_date": "2026-07-09 09:27:46"
+        "registration_date": "2026-07-09 09:27:46",
+        "attendance": true
     },
     {
         "id": 19,
@@ -149,7 +167,8 @@
         "name": "Ivan Kly Lamason",
         "email": "ivan.lamason@gmail.com",
         "contact": "09171234519",
-        "registration_date": "2026-07-10 08:10:15"
+        "registration_date": "2026-07-10 08:10:15",
+        "attendance": true
     },
     {
         "id": 20,
@@ -157,7 +176,8 @@
         "name": "John Michael Cruz",
         "email": "john.cruz@gmail.com",
         "contact": "09171234520",
-        "registration_date": "2026-07-10 08:15:50"
+        "registration_date": "2026-07-10 08:15:50",
+        "attendance": false
     },
     {
         "id": 21,
@@ -165,7 +185,8 @@
         "name": "Kimberly Tan",
         "email": "kim.tan@gmail.com",
         "contact": "09171234521",
-        "registration_date": "2026-07-11 09:10:30"
+        "registration_date": "2026-07-11 09:10:30",
+        "attendance": true
     },
     {
         "id": 22,
@@ -173,7 +194,8 @@
         "name": "Jerome Aquino",
         "email": "jerome.a@gmail.com",
         "contact": "09171234522",
-        "registration_date": "2026-07-11 09:18:12"
+        "registration_date": "2026-07-11 09:18:12",
+        "attendance": true
     },
     {
         "id": 23,
@@ -181,7 +203,8 @@
         "name": "Ralph Mendoza",
         "email": "ralph.m@gmail.com",
         "contact": "09171234523",
-        "registration_date": "2026-07-12 14:00:01"
+        "registration_date": "2026-07-12 14:00:01",
+        "attendance": false
     },
     {
         "id": 24,
@@ -189,7 +212,8 @@
         "name": "Trisha Velasco",
         "email": "trisha.v@gmail.com",
         "contact": "09171234524",
-        "registration_date": "2026-07-12 14:06:18"
+        "registration_date": "2026-07-12 14:06:18",
+        "attendance": true
     },
     {
         "id": 25,
@@ -197,7 +221,8 @@
         "name": "Noel Santos",
         "email": "noel.s@gmail.com",
         "contact": "09171234525",
-        "registration_date": "2026-07-13 09:15:40"
+        "registration_date": "2026-07-13 09:15:40",
+        "attendance": true
     },
     {
         "id": 26,
@@ -205,7 +230,8 @@
         "name": "Karen Flores",
         "email": "karen.f@gmail.com",
         "contact": "09171234526",
-        "registration_date": "2026-07-13 09:18:54"
+        "registration_date": "2026-07-13 09:18:54",
+        "attendance": false
     },
     {
         "id": 27,
@@ -213,7 +239,8 @@
         "name": "Paul Ramos",
         "email": "paul.r@gmail.com",
         "contact": "09171234527",
-        "registration_date": "2026-07-14 15:01:17"
+        "registration_date": "2026-07-14 15:01:17",
+        "attendance": true
     },
     {
         "id": 28,
@@ -221,7 +248,8 @@
         "name": "Liza Rivera",
         "email": "liza.r@gmail.com",
         "contact": "09171234528",
-        "registration_date": "2026-07-14 15:08:41"
+        "registration_date": "2026-07-14 15:08:41",
+        "attendance": true
     },
     {
         "id": 29,
@@ -229,7 +257,8 @@
         "name": "Miguel Hernandez",
         "email": "miguel.h@gmail.com",
         "contact": "09171234529",
-        "registration_date": "2026-07-15 09:02:05"
+        "registration_date": "2026-07-15 09:02:05",
+        "attendance": false
     },
     {
         "id": 30,
@@ -237,7 +266,8 @@
         "name": "Grace Morales",
         "email": "grace.m@gmail.com",
         "contact": "09171234530",
-        "registration_date": "2026-07-15 09:07:58"
+        "registration_date": "2026-07-15 09:07:58",
+        "attendance": true
     },
     {
         "id": 31,
@@ -245,7 +275,8 @@
         "name": "Ryan Domingo",
         "email": "ryan.d@gmail.com",
         "contact": "09171234531",
-        "registration_date": "2026-07-16 08:35:12"
+        "registration_date": "2026-07-16 08:35:12",
+        "attendance": true
     },
     {
         "id": 32,
@@ -253,7 +284,8 @@
         "name": "Claire Torres",
         "email": "claire.t@gmail.com",
         "contact": "09171234532",
-        "registration_date": "2026-07-16 08:39:44"
+        "registration_date": "2026-07-16 08:39:44",
+        "attendance": false
     },
     {
         "id": 33,
@@ -261,7 +293,8 @@
         "name": "Sean Villanueva",
         "email": "sean.v@gmail.com",
         "contact": "09171234533",
-        "registration_date": "2026-07-17 07:15:55"
+        "registration_date": "2026-07-17 07:15:55",
+        "attendance": true
     },
     {
         "id": 34,
@@ -269,7 +302,8 @@
         "name": "Bea Fernandez",
         "email": "bea.f@gmail.com",
         "contact": "09171234534",
-        "registration_date": "2026-07-17 07:20:13"
+        "registration_date": "2026-07-17 07:20:13",
+        "attendance": true
     },
     {
         "id": 35,
@@ -277,7 +311,8 @@
         "name": "Leo Castillo",
         "email": "leo.c@gmail.com",
         "contact": "09171234535",
-        "registration_date": "2026-07-18 09:00:00"
+        "registration_date": "2026-07-18 09:00:00",
+        "attendance": false
     },
     {
         "id": 36,
@@ -285,7 +320,8 @@
         "name": "Camille Reyes",
         "email": "camille.r@gmail.com",
         "contact": "09171234536",
-        "registration_date": "2026-07-18 09:04:36"
+        "registration_date": "2026-07-18 09:04:36",
+        "attendance": true
     },
     {
         "id": 37,
@@ -293,7 +329,8 @@
         "name": "Adrian Lim",
         "email": "adrian.l@gmail.com",
         "contact": "09171234537",
-        "registration_date": "2026-07-19 18:01:18"
+        "registration_date": "2026-07-19 18:01:18",
+        "attendance": true
     },
     {
         "id": 38,
@@ -301,7 +338,8 @@
         "name": "Shane Gonzales",
         "email": "shane.g@gmail.com",
         "contact": "09171234538",
-        "registration_date": "2026-07-19 18:05:22"
+        "registration_date": "2026-07-19 18:05:22",
+        "attendance": false
     },
     {
         "id": 39,
@@ -309,7 +347,8 @@
         "name": "Joshua Navarro",
         "email": "joshua.n@gmail.com",
         "contact": "09171234539",
-        "registration_date": "2026-07-20 09:10:45"
+        "registration_date": "2026-07-20 09:10:45",
+        "attendance": true
     },
     {
         "id": 40,
@@ -317,6 +356,7 @@
         "name": "Princess Aquino",
         "email": "princess.a@gmail.com",
         "contact": "09171234540",
-        "registration_date": "2026-07-20 09:16:30"
+        "registration_date": "2026-07-20 09:16:30",
+        "attendance": true
     }
 ]

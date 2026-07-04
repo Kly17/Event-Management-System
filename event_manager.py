@@ -778,7 +778,8 @@ class EventManager:
             print("4. Edit Participant")
             print("5. Delete Participant")
             print("6. View Participants by Event")
-            print("7. Back")
+            print("7. Mark Attendance")
+            print("8. Back")
 
             choice = input("\nEnter your choice: ")
 
@@ -799,8 +800,11 @@ class EventManager:
             
             elif choice == "6":
                 self.view_participants_by_event()
-
+            
             elif choice == "7":
+                self.mark_attendance()
+
+            elif choice == "8":
                 break
 
             else:
@@ -968,6 +972,8 @@ class EventManager:
         else:
             event_name = "Unknown Event"
 
+        status = "Present" if participant.attendance else "Absent"
+
         print("----------------------------------------")
         print(f"Participant ID : {participant.id}")
         print(f"Event ID       : {participant.event_id}")
@@ -975,6 +981,7 @@ class EventManager:
         print(f"Name           : {participant.name}")
         print(f"Email          : {participant.email}")
         print(f"Contact        : {participant.contact}")
+        print(f"Attendance     : {status}")
 
         # Only display this if your Participant class has it
         if hasattr(participant, "registration_date"):
@@ -1221,3 +1228,56 @@ class EventManager:
 
         print("-" * 80)
         print(f"Total Registered Participants : {total_registered}")
+
+    #=========================================================================
+    #ATTENDANCE MARKING
+    def mark_attendance(self):
+
+        if not self.participants:
+            print("\nNo participants available.")
+            return
+
+        self.view_participants()
+
+        try:
+            participant_id = int(
+                input("\nEnter Participant ID: ")
+            )
+
+        except ValueError:
+            print("Please enter a valid number.")
+            return
+
+        participant = self.find_participant_by_id(participant_id)
+
+        if participant is None:
+            print("Participant not found.")
+            return
+
+        print("\nParticipant Information")
+        print("-------------------------")
+        print(f"Name : {participant.name}")
+        print(f"Email: {participant.email}")
+
+        while True:
+
+            choice = input(
+                "\nMark attendance? (P = Present / A = Absent): "
+            ).strip().lower()
+
+            if choice == "p":
+
+                participant.attendance = True
+                break
+
+            elif choice == "a":
+
+                participant.attendance = False
+                break
+
+            else:
+                print("Invalid choice.")
+
+        self.save_participants()
+
+        print("\nAttendance updated successfully!")
