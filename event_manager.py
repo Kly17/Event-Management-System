@@ -732,9 +732,11 @@ class EventManager:
         print("\n========== EVENT DASHBOARD ==========")
     
         print(f"\nTotal Events : {len(self.events)}")
+        print(f"Total Participants : {len(self.participants)}")
     
         self.show_category_statistics()
         self.show_capacity_statistics()
+        self.show_registration_statistics()
 
     #=========================================================================
     # DISPLAY TEXT
@@ -1176,3 +1178,46 @@ class EventManager:
             print("Status           : FULL")
         else:
             print("Status           : OPEN")
+
+    
+    #=========================================================================
+    #REGISTRATION STATISTICS
+    def show_registration_statistics(self):
+
+        print("\n========== REGISTRATION STATISTICS ==========")
+
+        print(
+            f"{'ID':<4}"
+            f"{'Event Name':<30}"
+            f"{'Reg/Cap':<12}"
+            f"{'Remaining':<12}"
+            f"{'% Full':<10}"
+            f"{'Status'}"
+        )
+
+        print("-" * 80)
+
+        total_registered = 0
+
+        for event in self.events:
+
+            registered = len(self.find_participants_by_event(event.id))
+            remaining = event.capacity - registered
+
+            percent = (registered / event.capacity) * 100 if event.capacity > 0 else 0
+
+            status = "FULL" if remaining == 0 else "OPEN"
+
+            total_registered += registered
+
+            print(
+                f"{event.id:<4}"
+                f"{event.name[:28]:<30}"
+                f"{f'{registered}/{event.capacity}':<12}"
+                f"{remaining:<12}"
+                f"{f'{percent:.1f}%':<10}"
+                f"{status}"
+            )
+
+        print("-" * 80)
+        print(f"Total Registered Participants : {total_registered}")
