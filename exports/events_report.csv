@@ -1,0 +1,21 @@
+Event ID,Name,Category,Date,Time,Location,Capacity,Description
+1,Graduation Ceremony 2026,Ceremony,2026-07-15,10:00,University Gymnasium,500,Annual graduation ceremony for the Class of 2026.
+2,Python Programming Workshop,Workshop,2026-07-20,08:30,Computer Laboratory 1,50,Hands-on Python programming workshop for beginners.
+3,AI and Machine Learning Seminar,Seminar,2026-08-05,10:00,Engineering Auditorium,200,Introduction to artificial intelligence and machine learning.
+4,Student Leadership Training,Training,2026-08-10,09:00,Conference Hall,120,Leadership development for student organization officers.
+5,Campus Clean-Up Drive,Community Service,2026-08-15,07:00,University Grounds,150,Volunteer activity to clean the university campus.
+6,Research Proposal Defense,Academic,2026-08-22,13:00,Room 305,80,Presentation and defense of undergraduate research proposals.
+7,Hackathon 2026,Competition,2026-09-01,08:00,Innovation Hub,100,24-hour programming competition for students.
+8,Career Fair,Career,2026-09-10,09:00,Covered Court,500,Meet employers and explore internship opportunities.
+9,Information Technology Symposium,Conference,2026-09-18,09:30,Main Auditorium,350,Conference featuring experts in information technology.
+10,Freshmen Orientation,Meeting,2026-09-25,08:00,University Gymnasium,700,Orientation program for newly enrolled students.
+11,Web Development Bootcamp,Workshop,2026-10-03,09:00,Computer Laboratory 2,60,"Learn HTML, CSS, JavaScript, and web development basics."
+12,Cybersecurity Awareness Seminar,Seminar,2026-10-08,14:00,Audio Visual Room,250,Best practices for staying safe online.
+13,Chess Tournament,Competition,2026-10-15,09:00,Student Center,64,Inter-department chess tournament.
+14,Faculty Meeting,Meeting,2026-10-20,15:00,Conference Room A,120,Monthly meeting of all university faculty members.
+15,Entrepreneurship Summit,Conference,2026-11-02,09:00,Business Building,300,Conference focused on innovation and entrepreneurship.
+16,First Aid Training,Training,2026-11-10,08:30,Nursing Skills Laboratory,80,Basic first aid and emergency response training.
+17,Tree Planting Activity,Community Service,2026-11-20,07:30,City Watershed,200,Environmental conservation through tree planting.
+18,Christmas Outreach Program,Community Service,2026-12-20,09:00,Community Center,150,Gift-giving activity for local communities.
+19,Christmas Festival,Festival,2026-12-20,18:00,University Plaza,1000,Annual Christmas celebration with performances and food stalls.
+20,AI Seminar,Seminar,2026-08-05,09:00,Room 101,50,A Seminar About AI

@@ -1,3 +1,5 @@
+import csv
+import os
 import json
 from datetime import datetime
 from event import Event
@@ -1371,3 +1373,148 @@ class EventManager:
     
         if worst_event:
             print(f"Worst Attendance  : {worst_event.name} ({worst_rate:.2f}%)")
+    
+    #=========================================================================
+    #EXPORT REPORTS
+
+    
+    #EXPORT MENU
+    def export_menu(self):
+        
+        while True:
+
+            print("\n========== EXPORT REPORTS ==========")
+            print("1. Export Events (CSV)")
+            print("2. Export Participants (CSV)")
+            print("3. Export Attendance Report (CSV)")
+            print("4. Back")
+
+            choice = input("\nEnter your choice: ")
+
+            if choice == "1":
+                self.export_events_to_csv()
+
+            elif choice == "2":
+                self.export_participants_to_csv()
+            
+            elif choice == "3":
+                self.export_attendance_report_to_csv()
+
+            elif choice == "4":
+                break
+
+            else:
+                print("Invalid choice.")
+    
+    
+    #EXPORT REPORT EVENTS
+    def export_events_to_csv(self):
+
+        if not self.events:
+            print("\nNo events available to export.")
+            return
+        
+        os.makedirs("exports", exist_ok=True)
+
+        filename = "exports/events_report.csv"
+
+        with open(filename, mode="w", newline="",  encoding="utf-8") as file:
+
+            writer = csv.writer(file)
+
+            writer.writerow([
+                "Event ID", "Name", "Category", "Date",
+                "Time", "Location", "Capacity", "Description"
+            ])
+
+            for event in self.events:
+                writer.writerow([
+                    event.id, event.name, event.category,
+                    event.date, event.time, event.location,
+                    event.capacity, event.description
+                ])
+
+        print(f"\nEvents exported successfully to {filename}.")
+
+    
+    #EXPORT REPORT PARTICIPANTS
+    def export_participants_to_csv(self):
+
+        if not self.participants:
+            print("\nNo participants available to export.")
+            return
+        
+        os.makedirs("exports", exist_ok=True)
+
+        filename = "exports/participants_report.csv"
+
+        with open(filename, mode="w", newline="",  encoding="utf-8") as file:
+
+            writer = csv.writer(file)
+
+            writer.writerow([
+                "Participant ID", "Event ID", "Name",
+                "Email", "Contact", "Registration Date", "Attendance"
+            ])
+
+            for participant in self.participants:
+                writer.writerow([
+                    participant.id, participant.event_id,
+                    participant.name, participant.email,
+                    participant.contact, participant.registration_date,
+                    "Present" if participant.attendance else "Absent"
+                ])
+
+        print(f"\nParticipants exported successfully to {filename}.")
+
+    
+    #EXPORT REPORT ATTENDANCE
+    def export_attendance_report_to_csv(self): 
+    
+        if not self.events:
+            print("\nNo events available for attendance report.")
+            return
+
+        os.makedirs("exports", exist_ok=True)
+
+        filename = "exports/attendance_report.csv"
+
+        with open(filename, mode="w", newline="",  encoding="utf-8") as file:
+
+            writer = csv.writer(file)
+
+            writer.writerow([
+                "Event ID", "Event Name", "Registered",
+                "Present", "Absent", "Attendance Rate (%)", "Status"
+            ])
+
+            for event in self.events:
+
+                participants = self.find_participants_by_event(event.id)
+
+                registered = len(participants)
+                present = sum(
+                    participant.attendance
+                    for participant in participants
+                )
+                absent = registered - present
+
+                rate = (present / registered) * 100 if registered > 0 else 0
+
+                if rate == 100:
+                    status = "Excellent"
+                elif rate >= 75:
+                    status = "Good"
+                elif rate >= 50:
+                    status = "Fair"
+                else:
+                    status = "Poor"
+
+                writer.writerow([
+                    event.id, event.name, registered,
+                    present, absent, f"{rate:.2f}", status
+                ])
+
+        print(f"\nAttendance report exported successfully to {filename}.")
+
+
