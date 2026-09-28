@@ -1,6 +1,8 @@
 import csv
 import os
 import json
+
+from database import Database
 from datetime import datetime
 from event import Event
 from participant import Participant
@@ -11,8 +13,8 @@ class EventManager:
     #CONSTRUCTOR
     def __init__(self):
         self.events = self.load_events()
-        self.page_size = 5
         self.participants = self.load_participants()
+        self.page_size = 5
         self.categories = [
         "Academic",
         "Career",
