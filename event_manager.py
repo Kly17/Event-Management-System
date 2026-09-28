@@ -12,6 +12,11 @@ class EventManager:
 
     #CONSTRUCTOR
     def __init__(self):
+        self.db = Database()
+        self.events = self.db.get_all_events()
+        self.events = self.db.get_all_participants()
+
+
         self.events = self.load_events()
         self.participants = self.load_participants()
         self.page_size = 5
@@ -274,6 +279,7 @@ class EventManager:
         )
        
             
+        self.db.add_event(new_event)
         self.events.append(new_event)
         self.save_events()
 

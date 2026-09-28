@@ -198,5 +198,15 @@
         "description": "A Seminar About AI",
         "capacity": 50,
         "location": "Room 101"
+    },
+    {
+        "id": 21,
+        "name": "Fixing Workshop",
+        "category": "Workshop",
+        "date": "2026-10-20",
+        "time": "10:00",
+        "description": "DIY Fixing Workshop",
+        "capacity": 10,
+        "location": "Tacloban City"
     }
 ]

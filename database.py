@@ -213,6 +213,34 @@ class Database:
             for row in rows
         ]
 
+    #========================= Add to Database =========================
+
+    def add_event(self, event):
+        self.cursor.execute("""
+            INSERT INTO events (
+                id,
+                name,
+                category,
+                date,
+                time,
+                description,
+                capacity,
+                location
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        """, (
+            event.id,
+            event.name,
+            event.category,
+            event.date,
+            event.time,
+            event.description,
+            event.capacity,
+            event.location
+        ))
+    
+        self.connection.commit()
+
     #========================= Close Connection =========================
 
 
