@@ -2,6 +2,8 @@ import sqlite3
 import json
 import os
 
+from event import Event
+from participant import Participant
 
 class Database:
 
@@ -160,6 +162,56 @@ class Database:
 
         self.connection.commit()
 
+
+
+    #========================= Export JSON Files =========================
+    #========================== Export Events =========================
+    def get_all_events(self):
+        self.cursor.execute("""
+            SELECT *
+            FROM events
+            ORDER BY id
+        """)
+
+        rows = self.cursor.fetchall()
+
+        return [
+            Event(
+                row["id"],
+                row["name"],
+                row["category"],
+                row["date"],
+                row["time"],
+                row["description"],
+                row["capacity"],
+                row["location"]
+            )
+            for row in rows
+        ]
+
+    #========================== Export Participants =========================
+
+    def get_all_participants(self):
+        self.cursor.execute("""
+            SELECT *
+            FROM participants
+            ORDER BY id
+        """)
+    
+        rows = self.cursor.fetchall()
+    
+        return [
+            Participant(
+                row["id"],
+                row["event_id"],
+                row["name"],
+                row["email"],
+                row["contact"],
+                row["registration_date"],
+                bool(row["attendance"])
+            )
+            for row in rows
+        ]
 
     #========================= Close Connection =========================
 
