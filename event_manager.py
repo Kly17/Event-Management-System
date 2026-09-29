@@ -378,7 +378,7 @@ class EventManager:
         if new_location:
             event.location = new_location
 
-        self.save_events()
+        self.db.update_event(event)
 
         print("\nEvent updated successfully!")
     

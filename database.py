@@ -241,6 +241,32 @@ class Database:
     
         self.connection.commit()
 
+    #========================= Edit Values to Database =========================
+    def update_event(self, event):
+        self.cursor.execute("""
+            UPDATE events
+            SET
+                name = ?,
+                category = ?,
+                date = ?,
+                time = ?,
+                description = ?,
+                capacity = ?,
+                location = ?
+            WHERE id = ?
+        """, (
+            event.name,
+            event.category,
+            event.date,
+            event.time,
+            event.description,
+            event.capacity,
+            event.location,
+            event.id
+        ))
+    
+        self.connection.commit()
+
     #========================= Close Connection =========================
 
 
