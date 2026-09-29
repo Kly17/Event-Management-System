@@ -213,7 +213,7 @@ class Database:
             for row in rows
         ]
 
-    #========================= Add to Database =========================
+    #========================= Add Event to Database =========================
 
     def add_event(self, event):
         self.cursor.execute("""
@@ -241,7 +241,7 @@ class Database:
     
         self.connection.commit()
 
-    #========================= Edit Values to Database =========================
+    #========================= Edit Event in Database =========================
     def update_event(self, event):
         self.cursor.execute("""
             UPDATE events
@@ -264,6 +264,15 @@ class Database:
             event.location,
             event.id
         ))
+    
+        self.connection.commit()
+
+    #========================= Delete Event from Database =========================
+    def delete_event(self, event_id):
+        self.cursor.execute("""
+            DELETE FROM events
+            WHERE id = ?
+        """, (event_id,))
     
         self.connection.commit()
 
