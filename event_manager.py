@@ -6,6 +6,7 @@ from database import Database
 from datetime import datetime
 from event import Event
 from participant import Participant
+import participant
 
 
 class EventManager:
@@ -650,8 +651,8 @@ class EventManager:
         confirm = input("Are you sure you want to delete this event? (Y/N): ").lower()
 
         if confirm == "y":
+            self.db.delete_event(event_id)
             self.events.remove(event)
-            self.save_events()
             print("Event deleted successfully!")
 
         else:
@@ -959,8 +960,8 @@ class EventManager:
             registration_date=datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         )
 
+        self.db.add_participant(new_participant)
         self.participants.append(new_participant)
-        self.save_participants()
 
         print("\n==========================================")
         print("Participant registered successfully!")
@@ -1099,7 +1100,7 @@ class EventManager:
         if new_contact:
             participant.contact = new_contact
 
-        self.save_participants()
+        self.db.update_participant(participant)
 
         print("\nParticipant updated successfully!")
     
@@ -1141,9 +1142,8 @@ class EventManager:
             print("\nDeletion cancelled.")
             return
 
+        self.db.delete_participant(participant_id)
         self.participants.remove(participant)
-
-        self.save_participants()
 
         print("\nParticipant deleted successfully!")
 

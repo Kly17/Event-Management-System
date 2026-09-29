@@ -276,6 +276,65 @@ class Database:
     
         self.connection.commit()
 
+    #========================= Add Participant to Database =========================
+    def add_participant(self, participant):
+        self.cursor.execute("""
+            INSERT INTO participants (
+                id,
+                event_id,
+                name,
+                email,
+                contact,
+                registration_date,
+                attendance
+            )
+            VALUES (?, ?, ?, ?, ?, ?, ?)
+        """, (
+            participant.id,
+            participant.event_id,
+            participant.name,
+            participant.email,
+            participant.contact,
+            participant.registration_date,
+            int(participant.attendance)
+        ))
+
+        self.connection.commit()
+
+    #======================== Edit Participant in Database =========================
+    def update_participant(self, participant):
+        self.cursor.execute("""
+            UPDATE participants
+            SET
+                event_id = ?,
+                name = ?,
+                email = ?,
+                contact = ?,
+                registration_date = ?,
+                attendance = ?
+            WHERE id = ?
+        """, (
+            participant.event_id,
+            participant.name,
+            participant.email,
+            participant.contact,
+            participant.registration_date,
+            int(participant.attendance),
+            participant.id
+        ))
+
+        self.connection.commit()
+
+    #======================== Delete Participant from Database =========================
+
+    def delete_participant(self, participant_id):
+        self.cursor.execute("""
+            DELETE FROM participants
+            WHERE id = ?
+        """, (participant_id,))
+    
+        self.connection.commit()
+
     #========================= Close Connection =========================
 
 
